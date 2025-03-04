@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Qeety</string>
-    <string name="test">Ceci est un test</string>
+    <string name="test">Ceci est un test Ceci est un testCeci est un testCeci est un testCeci est un test</string>
+    <string name="qtrobot" translatable="false">QtRobot</string>
+    <string name="bouton_pr_c_dent" translatable="false">previous</string>
+    <string name="bouton_suivant" translatable="false">next</string>
+    <string name="bouton_1" translatable="false">like</string>
+    <string name="bouton_2" translatable="false">sad</string>
+    <string name="bouton_3" translatable="false">scream</string>
+    <string name="bouton_4" translatable="false">smiley</string>
 </resources>

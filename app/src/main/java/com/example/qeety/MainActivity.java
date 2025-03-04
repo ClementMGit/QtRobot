@@ -1,6 +1,8 @@
 package com.example.qeety;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,7 +17,7 @@ import java.util.Locale;
 import java.util.HashMap;
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private HashMap<Integer, String> localeMap; // Associe chaque image à un code de langue
 
