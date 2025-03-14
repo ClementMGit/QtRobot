@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -21,6 +22,8 @@ public class MainActivity extends Activity {
 
     private HashMap<Integer, String> localeMap; // Associe chaque image à un code de langue
 
+    private String voice = "F";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,8 @@ public class MainActivity extends Activity {
 
     private void initLocalePicker() {
         Spinner spinner = findViewById(R.id.localePicker);
+        Spinner voiceChoice = findViewById(R.id.voicePicker);
+        Spinner storyChoice = findViewById(R.id.storyPicker);
 
         // Tableau des images de drapeaux
         int[] flagImages = {
@@ -38,14 +43,24 @@ public class MainActivity extends Activity {
                 R.drawable.es   // Espagnol
         };
 
+        int[] voiceImage = {
+                R.drawable.icone_femme, //Femme
+                R.drawable.icone_homme  //Homme
+        };
+
         // Associer les positions aux codes de langue
         localeMap = new HashMap<>();
         localeMap.put(0, "fr-FR");
         localeMap.put(1, "en-US");
         localeMap.put(2, "es-ES");
 
+
+
         ImageSpinnerAdapter adapter = new ImageSpinnerAdapter(this, flagImages);
         spinner.setAdapter(adapter);
+
+        ImageSpinnerAdapter adapterVoice = new ImageSpinnerAdapter(this,voiceImage);
+        voiceChoice.setAdapter(adapterVoice);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -55,6 +70,26 @@ public class MainActivity extends Activity {
                     LocaleManager localeManager = getSystemService(LocaleManager.class);
                     localeManager.setApplicationLocales(new LocaleList(Locale.forLanguageTag(selectedLocale)));
                 }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        voiceChoice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0){
+                    //Cas pour la voix femme
+                    voice = "F";
+                    Log.d("voice Change", "Voice changed to Femme (\"F\") ");
+                } else if (position == 1) {
+                    //Cas pour le voix homme
+                    voice = "H";
+                    Log.d("voice Change", "Voice changed to MEN (\"H\") ");
+                }
+
             }
 
             @Override
