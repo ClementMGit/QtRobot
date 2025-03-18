@@ -14,8 +14,21 @@
 
         <Spinner
             android:id="@+id/localePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Spinner
+            android:id="@+id/voicePicker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Spinner
+            android:id="@+id/storyPicker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <!-- Image de Qt au centre -->
@@ -84,7 +97,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/coeur"
+            android:src="@drawable/triste"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_1"
             android:background="?android:attr/selectableItemBackground" />
@@ -102,7 +115,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/coeur"
+            android:src="@drawable/smiley"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_3"
             android:background="?android:attr/selectableItemBackground" />
@@ -111,7 +124,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/coeur"
+            android:src="@drawable/heureux"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_4"
             android:background="?android:attr/selectableItemBackground" />
