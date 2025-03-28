@@ -9,4 +9,5 @@
     <string name="bouton_2" translatable="false">sad</string>
     <string name="bouton_3" translatable="false">scream</string>
     <string name="bouton_4" translatable="false">smiley</string>
+    <string name="qt_emotion">qt_emotion</string>
 </resources>

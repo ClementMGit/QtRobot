@@ -32,13 +32,40 @@
     </LinearLayout>
 
     <!-- Image de Qt au centre -->
-    <ImageView
+
+    <FrameLayout
         android:id="@+id/qt_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+
+        android:layout_width="wrap_content"
         android:layout_centerInParent="true"
-        android:contentDescription="@string/qtrobot"
-        android:src="@drawable/qt_placeholder" />
+
+        android:layout_height="wrap_content">
+
+        <!-- Première ImageView -->
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="250dp"
+            android:contentDescription="@string/qtrobot"
+            android:layout_height="250dp"
+            android:src="@drawable/qt_placeholder" />
+
+        <!-- Deuxième ImageView (superposée sur la première) -->
+        <ImageView
+            android:contentDescription="@string/qt_emotion"
+            android:scaleX="0.31"
+            android:scaleY="0.31"
+
+            android:layout_marginBottom="78dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+        android:src="@drawable/qt_enrhume" />
+
+    </FrameLayout>
+
+
+
+
     <!-- Texte  -->
 
 
