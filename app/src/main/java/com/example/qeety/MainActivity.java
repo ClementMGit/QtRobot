@@ -1,6 +1,7 @@
 package com.example.qeety;
 
 import android.graphics.drawable.AnimationDrawable;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.animation.ObjectAnimator;
@@ -8,6 +9,8 @@ import android.animation.ValueAnimator;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import java.util.Random;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +20,7 @@ import android.widget.Spinner;
 import android.app.LocaleManager;
 import android.os.Build;
 import android.os.LocaleList;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
@@ -31,9 +35,10 @@ public class MainActivity extends Activity {
 
     private HashMap<Integer, String> localeMap; // Associe chaque image à un code de langue
     private  HashMap<Integer,String> storyMap;
-
+    private TextView phrase;
+    private String lastText = "";
     private String voice = "F";
-
+    private ImageButton next;
     RelativeLayout mainLayout;
 
     @Override
@@ -49,6 +54,35 @@ public class MainActivity extends Activity {
         generateButterflies();  // Génère plusieurs papillons avec animation
 
         initLocalePicker();
+        next = findViewById(R.id.next_btn);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("NextButton", "Bouton Next cliqué !");
+                onNextClicked();
+            }
+        });
+        phrase = findViewById(R.id.phrase);
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                String currentText = phrase.getText().toString();
+                if (!currentText.equals(lastText)) {
+                    lastText = currentText;
+                    onTextChanged(currentText);
+                }
+                handler.postDelayed(this, 500); // Vérifie toutes les 500ms
+            }
+        }, 500);
+    }
+
+    private void onNextClicked() {
+        // Exemple d'action : changer le texte de `phrase`
+        phrase.setText("Nouveau texte après Next !");
+
+        // Ajoute ici ce que tu veux faire quand on clique sur Next
     }
 
 
@@ -142,41 +176,10 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void generateButterflies2() {
-        Random random = new Random();
-
-        for (int i = 0; i < NUM_BUTTERFLIES; i++) {
-            ImageView butterfly = new ImageView(this);
-            butterfly.setBackgroundResource(R.drawable.butterfly_anim);
-            butterfly.setLayoutParams(new RelativeLayout.LayoutParams(100, 100));
-
-            // Position aléatoire
-            int x = random.nextInt(800);
-            int y = random.nextInt(1200);
-            butterfly.setX(x);
-            butterfly.setY(y);
-
-            mainLayout.addView(butterfly);
-
-            // Démarrer l'animation d'ailes
-            AnimationDrawable butterflyAnimation = (AnimationDrawable) butterfly.getBackground();
-            butterflyAnimation.start();
-
-            // Animation de vol en zigzag
-            ObjectAnimator flyAnimationX = ObjectAnimator.ofFloat(butterfly, "translationX", x, x + 100, x - 100, x);
-            flyAnimationX.setDuration(4000);
-            flyAnimationX.setRepeatCount(ValueAnimator.INFINITE);
-            flyAnimationX.setRepeatMode(ValueAnimator.REVERSE);
-            flyAnimationX.start();
-
-            ObjectAnimator flyAnimationY = ObjectAnimator.ofFloat(butterfly, "translationY", y, y - 200f, y);
-            flyAnimationY.setDuration(3000);
-            flyAnimationY.setRepeatCount(ValueAnimator.INFINITE);
-            flyAnimationY.setRepeatMode(ValueAnimator.REVERSE);
-            flyAnimationY.start();
-        }
+    private void onTextChanged(String newText) {
+        Log.d("TextChange", "Le texte a changé : " + newText);
+        // Ajoute ici l'action à effectuer quand le texte change
     }
-
     private void generateButterflies() {
         Random random = new Random();
 

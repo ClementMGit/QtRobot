@@ -64,7 +64,7 @@
             android:padding="15dp"/>
 
         <TextView
-            android:id="@+id/test"
+            android:id="@+id/phrase"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
