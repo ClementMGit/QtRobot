@@ -9,6 +9,7 @@ import android.animation.ValueAnimator;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import java.util.Random;
 
+import com.example.qeety.Animation;
 import android.os.Handler;
 import android.os.Looper;
 import android.app.Activity;
@@ -38,7 +39,7 @@ public class MainActivity extends Activity {
     private TextView phrase;
     private String lastText = "";
     private String voice = "F";
-    private ImageButton next;
+    private ImageButton next,before;
     RelativeLayout mainLayout;
 
     @Override
@@ -51,7 +52,7 @@ public class MainActivity extends Activity {
         if (mainLayout == null) {
             throw new NullPointerException("mainLayout is null! Check activity_main.xml.");
         }
-        generateButterflies();  // Génère plusieurs papillons avec animation
+        /////////////////////generateButterflies();  // Génère plusieurs papillons avec animation
 
         initLocalePicker();
         next = findViewById(R.id.next_btn);
@@ -60,6 +61,14 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Log.d("NextButton", "Bouton Next cliqué !");
                 onNextClicked();
+            }
+        });
+        before = findViewById(R.id.previous_btn);
+        before.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Previous", "Bouton Previous cliqué !");
+                onBeforeClicked();
             }
         });
         phrase = findViewById(R.id.phrase);
@@ -78,9 +87,13 @@ public class MainActivity extends Activity {
         }, 500);
     }
 
+    private void onBeforeClicked() {
+        phrase.setText(" (c) Nouveau texte après Next [/papillon jaune] !");
+    }
+
     private void onNextClicked() {
         // Exemple d'action : changer le texte de `phrase`
-        phrase.setText("Nouveau texte après Next !");
+        phrase.setText(" (int) Nouveau texte après Next [papillon jaune] !");
 
         // Ajoute ici ce que tu veux faire quand on clique sur Next
     }
@@ -179,42 +192,79 @@ public class MainActivity extends Activity {
     private void onTextChanged(String newText) {
         Log.d("TextChange", "Le texte a changé : " + newText);
         // Ajoute ici l'action à effectuer quand le texte change
+        verifsianim(newText);
+
     }
-    private void generateButterflies() {
-        Random random = new Random();
+    private void verifsianim(String texte) {
+        if (texte == null || texte.isEmpty()) return;
 
-        for (int i = 0; i < NUM_BUTTERFLIES; i++) {
-            ImageView butterfly = new ImageView(this);
-            butterfly.setLayoutParams(new RelativeLayout.LayoutParams(200, 200)); // Augmente la taille si nécessaire
-
-            // Charger le GIF avec Glide
-            Glide.with(this)
-                    .asGif()
-                    .load(R.drawable.yellow_butterfly)
-                    .into(butterfly);
-
-            // Position aléatoire
-            int x = random.nextInt(800);
-            int y = random.nextInt(1200);
-            butterfly.setX(x);
-            butterfly.setY(y);
-
-            mainLayout.addView(butterfly);
-
-            // Animation de vol en zigzag
-            ObjectAnimator flyAnimationX = ObjectAnimator.ofFloat(butterfly, "translationX", x, x + 100, x - 100, x);
-            flyAnimationX.setDuration(4000);
-            flyAnimationX.setRepeatCount(ValueAnimator.INFINITE);
-            flyAnimationX.setRepeatMode(ValueAnimator.REVERSE);
-            flyAnimationX.start();
-
-            ObjectAnimator flyAnimationY = ObjectAnimator.ofFloat(butterfly, "translationY", y, y - 200f, y);
-            flyAnimationY.setDuration(3000);
-            flyAnimationY.setRepeatCount(ValueAnimator.INFINITE);
-            flyAnimationY.setRepeatMode(ValueAnimator.REVERSE);
-            flyAnimationY.start();
+        // Gestion des animations
+        if (texte.contains("[papillon jaune]")) {
+            Log.d("verifsianim", "Détection de '[papillon jaune]' → Génération de papillons !");
+            Animation.generateButterflies(this, mainLayout, 5);
         }
+
+        if (texte.contains("[/papillon jaune]")) {
+            Log.d("verifsianim", "Détection de '[/papillon jaune]' → Disparition de papillons !");
+            Animation.removeButterfliesWithAnimation(mainLayout);
+        }
+
+        if (texte.contains("grenouille")) {
+            Log.d("verifsianim", "Détection de 'grenouille' → TODO : Ajouter animation");
+        }
+
+        if (texte.contains("arc-en-ciel")) {
+            Log.d("verifsianim", "Détection de 'arc-en-ciel' → TODO : Ajouter animation");
+        }
+
+        if (texte.contains("arbre")) {
+            Log.d("verifsianim", "Détection de 'arbre' → TODO : Ajouter animation");
+        }
+
+        // Détection des émotions
+        detectEmotions(texte);
     }
+
+    // Méthode pour détecter et loguer les émotions
+
+    private void detectEmotions(String texte) {
+        // Récupérer l'ImageView qui affichera les émotions
+        ImageView emotionImageView = findViewById(R.id.imageView2);
+
+        // Associer chaque émotion à une ressource drawable
+        HashMap<String, Integer> emotionImages = new HashMap<>();
+
+        //emotionImages.put("(b)", R.drawable.baillement);    // Baillement
+        //emotionImages.put("(p)", R.drawable.pleurs);       // Pleurs
+        ///emotionImages.put("(c)", R.id.qt_emotion_colere);       // Colère
+        emotionImages.put("(c)", R.drawable.qt_colere);       // Colère
+        //emotionImages.put("(tt)", R.drawable.tourne_tete); // Tourne la tête
+        //emotionImages.put("(thaut)", R.drawable.leve_tete); // Lève la tête
+        //emotionImages.put("(e)", R.drawable.exclamation);  // Saut avec exclamation
+        //emotionImages.put("(et)", R.drawable.etoile);      // Étoile
+        //emotionImages.put("(s)", R.drawable.stupeur);      // Stupeur
+        //emotionImages.put("(sou)", R.drawable.sourire);    // Sourire
+        //emotionImages.put("(soupir)", R.drawable.soupir);  // Soupir
+        //emotionImages.put("(l)", R.drawable.love);         // Love
+        //emotionImages.put("(t)", R.drawable.triste);       // Triste
+        //emotionImages.put("(cc)", R.drawable.coucou);      // Coucou
+        //emotionImages.put("(int)", R.drawable.interrogation); // Interrogation
+        emotionImages.put("(int)", R.drawable.qt_enrhume); // Enrumer
+
+        // Vérifier si le texte contient une émotion et mettre à jour l'image
+        for (String emotion : emotionImages.keySet()) {
+            if (texte.contains(emotion)) {
+                Log.d("detectEmotions", "Détection de '" + emotion + "' → Changement d'image !");
+                emotionImageView.setImageResource(emotionImages.get(emotion));
+                emotionImageView.setVisibility(View.VISIBLE); // Afficher l'émotion
+                return; // Stop après la première détection pour éviter les conflits
+            }
+        }
+
+        // Si aucune émotion détectée, cacher l'image
+        emotionImageView.setVisibility(View.VISIBLE);
+    }
+
 
 
 
