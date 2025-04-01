@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/paysage"
-    android:orientation="vertical"
->
+    android:orientation="vertical">
     <!-- Options de langue/voix en haut à gauche -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,19 +50,22 @@
             android:layout_width="250dp"
             android:contentDescription="@string/qtrobot"
             android:layout_height="250dp"
-            android:src="@drawable/qt_sprite" />
+            android:src="@drawable/qt_sprite_chat" />
 
         <!-- Deuxième ImageView (superposée sur la première) -->
-        <ImageView
-            android:contentDescription="@string/qt_emotion"
-            android:scaleX="0.31"
-            android:scaleY="0.31"
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView2"
-            android:layout_marginBottom="78dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/qt_blase" />
+            android:scaleX="0.32"
+            android:scaleY="0.31"
+            android:layout_marginBottom="69dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/qt_blase"
+            android:contentDescription="@string/qt_emotion"
+            app:shapeAppearanceOverlay="@style/RoundedCorners"/>
+
 
     </FrameLayout>
 
