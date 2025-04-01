@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">Qeety</string>
     <string name="test">This is a test</string>
+    <string name="story1">QT Discovers Colors 🌈</string>
+    <string name="story2">QT Looks for a Hug 🤗</string>
+
+
 </resources>
