@@ -7,6 +7,10 @@
     android:background="@drawable/paysage"
     android:orientation="vertical">
     <!-- Options de langue/voix en haut à gauche -->
+
+
+    <!-- Image de Qt au centre -->
+
     <LinearLayout
         android:id="@+id/menu"
         android:layout_width="match_parent"
@@ -15,28 +19,28 @@
 
         <Spinner
             android:id="@+id/localePicker"
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.25"
+            android:background="@android:color/transparent"
             android:scaleType="fitCenter" />
 
         <Spinner
             android:id="@+id/voicePicker"
-            android:layout_width="wrap_content"
+
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:layout_weight="1"/>
+            android:layout_weight="0.25"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter" />
 
         <Spinner
             android:id="@+id/storyPicker"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:scaleType="fitCenter"
-            android:layout_weight="1"/>
+            android:layout_weight="0.5"
+            android:scaleType="fitCenter" />
     </LinearLayout>
-
-
-    <!-- Image de Qt au centre -->
 
     <FrameLayout
         android:id="@+id/qt_image"
@@ -116,39 +120,35 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@drawable/rounded_button"
-
-            android:src="@drawable/chevron_left"
             android:contentDescription="@string/bouton_pr_c_dent"
-            android:scaleType="centerInside"
-            android:padding="15dp"/>
+            android:scaleX="-1"
+            android:src="@drawable/chevron_right" />
 
         <TextView
             android:id="@+id/phrase"
             android:background="@drawable/rounded_button"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:text="@string/test"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:padding="1dp"
             android:gravity="center"/>
 
         <ImageButton
             android:id="@+id/next_btn"
             android:layout_width="70dp"
             android:background="@drawable/rounded_button"
-
             android:layout_height="70dp"
             android:src="@drawable/chevron_right"
             android:contentDescription="@string/bouton_suivant"
-            android:scaleType="centerInside"
-            android:padding="15dp"/>
+      />
     </LinearLayout>
 <!-- Boutons Réactions -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:layout_below="@+id/layout_text"
         android:orientation="horizontal"
         android:gravity="center"
@@ -158,10 +158,10 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/triste"
-            android:scaleType="fitCenter"
+            android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/bouton_1"
-            android:background="?android:attr/selectableItemBackground" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/anxious" />
 
         <ImageButton
             android:layout_width="0dp"
@@ -185,7 +185,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/heureux"
+            android:src="@drawable/astonished"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_4"
             android:background="?android:attr/selectableItemBackground" />
