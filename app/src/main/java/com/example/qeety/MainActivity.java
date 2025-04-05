@@ -88,12 +88,12 @@ public class MainActivity extends Activity {
     }
 
     private void onBeforeClicked() {
-        phrase.setText(" (c) Nouveau texte après Next [/papillon jaune] !");
+        phrase.setText(" (c) Nouveau texte après Next [/papillon jaune] [arc-en-ciel] !");
     }
 
     private void onNextClicked() {
         // Exemple d'action : changer le texte de `phrase`
-        phrase.setText(" (int) Nouveau texte après Next [papillon jaune] !");
+        phrase.setText(" (int) Nouveau texte après Next [papillon jaune] [/arc-en-ciel] !");
 
         // Ajoute ici ce que tu veux faire quand on clique sur Next
     }
@@ -213,9 +213,15 @@ public class MainActivity extends Activity {
             Log.d("verifsianim", "Détection de 'grenouille' → TODO : Ajouter animation");
         }
 
-        if (texte.contains("arc-en-ciel")) {
+        if (texte.contains("[arc-en-ciel]")) {
             Log.d("verifsianim", "Détection de 'arc-en-ciel' → TODO : Ajouter animation");
+            Animation.showRainbowGif(this, mainLayout);
         }
+        if (texte.contains("[/arc-en-ciel]")) {
+            Log.d("verifsianim", "Disparition de l'arc-en-ciel détectée");
+            Animation.removeRainbow(mainLayout);
+        }
+
 
         if (texte.contains("arbre")) {
             Log.d("verifsianim", "Détection de 'arbre' → TODO : Ajouter animation");
@@ -235,21 +241,20 @@ public class MainActivity extends Activity {
         HashMap<String, Integer> emotionImages = new HashMap<>();
 
         //emotionImages.put("(b)", R.drawable.baillement);    // Baillement
-        //emotionImages.put("(p)", R.drawable.pleurs);       // Pleurs
-        ///emotionImages.put("(c)", R.id.qt_emotion_colere);       // Colère
+        emotionImages.put("(p)", R.drawable.qt_triste);       // Pleurs
         emotionImages.put("(c)", R.drawable.qt_colere);       // Colère
         //emotionImages.put("(tt)", R.drawable.tourne_tete); // Tourne la tête
         //emotionImages.put("(thaut)", R.drawable.leve_tete); // Lève la tête
-        //emotionImages.put("(e)", R.drawable.exclamation);  // Saut avec exclamation
+        emotionImages.put("(e)", R.drawable.qt_surpris);  // Saut avec exclamation
         //emotionImages.put("(et)", R.drawable.etoile);      // Étoile
         //emotionImages.put("(s)", R.drawable.stupeur);      // Stupeur
         //emotionImages.put("(sou)", R.drawable.sourire);    // Sourire
         //emotionImages.put("(soupir)", R.drawable.soupir);  // Soupir
-        //emotionImages.put("(l)", R.drawable.love);         // Love
-        //emotionImages.put("(t)", R.drawable.triste);       // Triste
+        emotionImages.put("(l)", R.drawable.qt_timide);         // Love
+        emotionImages.put("(t)", R.drawable.qt_triste);       // Triste
         //emotionImages.put("(cc)", R.drawable.coucou);      // Coucou
         //emotionImages.put("(int)", R.drawable.interrogation); // Interrogation
-        emotionImages.put("(int)", R.drawable.qt_enrhume); // Enrumer
+        emotionImages.put("(int)", R.drawable.qt_honte); // Enrumer
 
         // Vérifier si le texte contient une émotion et mettre à jour l'image
         for (String emotion : emotionImages.keySet()) {

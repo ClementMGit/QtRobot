@@ -1,13 +1,17 @@
 package com.example.qeety;
 
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
+//import android.util.Log;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.DecelerateInterpolator;
 
 import com.bumptech.glide.Glide;
 
@@ -23,7 +27,7 @@ public class Animation {
         for (int i = 0; i < num; i++) {
             ImageView butterfly = new ImageView(activity);
             butterfly.setLayoutParams(new RelativeLayout.LayoutParams(200, 200)); // Taille ajustable
-
+            butterfly.setTag("butterfly");
             // Charger le GIF avec Glide
             Glide.with(activity)
                     .asGif()
@@ -100,19 +104,80 @@ public class Animation {
     public static void removeButterfliesWithAnimation(RelativeLayout layout) {
         for (int i = layout.getChildCount() - 1; i >= 0; i--) {
             View view = layout.getChildAt(i);
-            if (view instanceof ImageView) {
+            if ("butterfly".equals(view.getTag())) { // ✅ Ne cible que les papillons
                 fadeOutAndRemove(view, layout);
             }
         }
     }
 
-    // ❌ Supprime immédiatement tous les papillons
-    public static void removeButterflies(RelativeLayout layout) {
+    public static void showRainbowGif(Activity activity, RelativeLayout layout) {
+        ImageView rainbowGif = new ImageView(activity);
+        rainbowGif.setTag("rainbow");
+
+        // Paramètres pour positionner l'arc-en-ciel entre le menu et l'image qt_image
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, // Largeur de l'écran
+                200 // Hauteur de l'arc-en-ciel
+        );
+
+        // Positionner l'arc-en-ciel juste en dessous du menu
+        params.addRule(RelativeLayout.BELOW, R.id.menu); // Juste en dessous du menu
+        params.addRule(RelativeLayout.ABOVE, R.id.qt_image); // Juste au-dessus de qt_image
+
+        // Ajouter de la marge pour éviter la collision
+        params.setMargins(0, 20, 0, 20); // Marge en haut et en bas
+
+        rainbowGif.setLayoutParams(params);
+
+        // Charger l'image gif dans ImageView
+        Glide.with(activity)
+                .asGif()
+                .load(R.drawable.arc_en_ciel) // Charge ton gif ici
+                .into(rainbowGif);
+
+        // Ajouter l'arc-en-ciel au layout
+        layout.addView(rainbowGif);
+
+        // Animation : effet de slide de gauche à droite avec descente
+        animateSlideFromLeft(rainbowGif);
+    }
+
+    public static void animateSlideFromLeft(final View view) {
+        // Animation de translation de gauche à droite
+        ObjectAnimator translateXAnimator = ObjectAnimator.ofFloat(
+                view, "translationX", -view.getWidth(), 0f
+        );
+        translateXAnimator.setDuration(1000);  // Durée de l'animation
+        translateXAnimator.setInterpolator(new DecelerateInterpolator());
+
+        // Animation de fondu
+        ObjectAnimator fadeAnimator = ObjectAnimator.ofFloat(
+                view, "alpha", 0f, 1f
+        );
+        fadeAnimator.setDuration(1000);  // Durée du fondu
+
+
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(translateXAnimator, fadeAnimator);
+        animatorSet.start();
+    }
+
+
+
+
+
+
+
+
+
+    public static void removeRainbow(RelativeLayout layout) {
         for (int i = layout.getChildCount() - 1; i >= 0; i--) {
             View view = layout.getChildAt(i);
-            if (view instanceof ImageView) {
-                layout.removeView(view);
+            if ("rainbow".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
             }
         }
     }
+
+
 }
