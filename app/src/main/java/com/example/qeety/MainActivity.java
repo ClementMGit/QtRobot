@@ -246,15 +246,15 @@ public class MainActivity extends Activity {
         //emotionImages.put("(tt)", R.drawable.tourne_tete); // Tourne la tête
         //emotionImages.put("(thaut)", R.drawable.leve_tete); // Lève la tête
         emotionImages.put("(e)", R.drawable.qt_surpris);  // Saut avec exclamation
-        //emotionImages.put("(et)", R.drawable.etoile);      // Étoile
-        //emotionImages.put("(s)", R.drawable.stupeur);      // Stupeur
-        //emotionImages.put("(sou)", R.drawable.sourire);    // Sourire
-        //emotionImages.put("(soupir)", R.drawable.soupir);  // Soupir
+        emotionImages.put("(et)", R.drawable.qt_langue);      // Étoile
+        emotionImages.put("(s)", R.drawable.qt_omg);      // Stupeur
+        emotionImages.put("(sou)", R.drawable.qt_content);    // Sourire
+        emotionImages.put("(soupir)", R.drawable.qt_decu);  // Soupir
         emotionImages.put("(l)", R.drawable.qt_timide);         // Love
-        emotionImages.put("(t)", R.drawable.qt_triste);       // Triste
-        //emotionImages.put("(cc)", R.drawable.coucou);      // Coucou
-        //emotionImages.put("(int)", R.drawable.interrogation); // Interrogation
-        emotionImages.put("(int)", R.drawable.qt_honte); // Enrumer
+        emotionImages.put("(t)", R.drawable.qt_peur);       // Triste
+        emotionImages.put("(cc)", R.drawable.qt_bonheur);      // Coucou
+        emotionImages.put("(int)", R.drawable.qt_suspicieux); // Interrogation
+        emotionImages.put("(hatchoum)", R.drawable.qt_honte); // Enrumer
 
         // Vérifier si le texte contient une émotion et mettre à jour l'image
         for (String emotion : emotionImages.keySet()) {

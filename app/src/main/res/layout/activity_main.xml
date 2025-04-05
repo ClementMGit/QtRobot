@@ -78,7 +78,7 @@
             android:contentDescription="@string/qt_emotion"
             android:scaleX="0.32"
             android:scaleY="0.31"
-            android:src="@drawable/qt_content"
+            android:src="@drawable/qt_blase"
             app:shapeAppearanceOverlay="@style/RoundedCorners" />
 
 
