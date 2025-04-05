@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
->
+    android:background="@drawable/paysage"
+    android:orientation="vertical">
     <!-- Options de langue/voix en haut à gauche -->
     <LinearLayout
+        android:id="@+id/menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -14,18 +16,89 @@
         <Spinner
             android:id="@+id/localePicker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitCenter" />
+
+        <Spinner
+            android:id="@+id/voicePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:layout_weight="1"/>
+
+        <Spinner
+            android:id="@+id/storyPicker"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="fitCenter"
+            android:layout_weight="1"/>
     </LinearLayout>
 
+
     <!-- Image de Qt au centre -->
-    <ImageView
+
+    <FrameLayout
         android:id="@+id/qt_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+
+        android:layout_width="wrap_content"
         android:layout_centerInParent="true"
-        android:contentDescription="@string/qtrobot"
-        android:src="@drawable/qt_placeholder" />
+
+        android:layout_height="wrap_content">
+
+        <!-- Première ImageView -->
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="250dp"
+            android:contentDescription="@string/qtrobot"
+            android:layout_height="250dp"
+            android:src="@drawable/qt_sprite_chat" />
+
+        <!-- Deuxième ImageView (superposée sur la première) -->
+        <!--com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleX="0.32"
+            android:scaleY="0.31"
+            android:layout_marginBottom="69dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/qt_blase"
+            android:contentDescription="@string/qt_emotion"
+            app:shapeAppearanceOverlay="@style/RoundedCorners"/-->
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView2"
+            android:layout_width="213dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="69dp"
+            android:contentDescription="@string/qt_emotion"
+            android:scaleX="0.32"
+            android:scaleY="0.31"
+            android:src="@drawable/qt_blase"
+            app:shapeAppearanceOverlay="@style/RoundedCorners" />
+
+
+    </FrameLayout>
+
+<ImageView
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_marginStart="130dp"
+    android:layout_below="@+id/qt_image"
+    android:src="@drawable/rocher_removebg_preview"
+    android:scaleX="2"
+    android:scaleY="2"
+
+    />
+
+
+
     <!-- Texte  -->
+
 
     <LinearLayout
         android:id="@+id/layout_text"
@@ -42,16 +115,18 @@
             android:id="@+id/previous_btn"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:background="?android:attr/selectableItemBackground"
+            android:background="@drawable/rounded_button"
+
             android:src="@drawable/chevron_left"
             android:contentDescription="@string/bouton_pr_c_dent"
             android:scaleType="centerInside"
             android:padding="15dp"/>
 
         <TextView
-            android:id="@+id/test"
+            android:id="@+id/phrase"
+            android:background="@drawable/rounded_button"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:text="@string/test"
             android:textColor="@color/black"
@@ -61,8 +136,9 @@
         <ImageButton
             android:id="@+id/next_btn"
             android:layout_width="70dp"
+            android:background="@drawable/rounded_button"
+
             android:layout_height="70dp"
-            android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/chevron_right"
             android:contentDescription="@string/bouton_suivant"
             android:scaleType="centerInside"
@@ -82,7 +158,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/coeur"
+            android:src="@drawable/triste"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_1"
             android:background="?android:attr/selectableItemBackground" />
@@ -100,7 +176,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/coeur"
+            android:src="@drawable/smiley"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_3"
             android:background="?android:attr/selectableItemBackground" />
@@ -109,7 +185,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/coeur"
+            android:src="@drawable/heureux"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_4"
             android:background="?android:attr/selectableItemBackground" />

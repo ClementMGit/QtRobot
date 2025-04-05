@@ -6,11 +6,9 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/image_view"
+    <TextView
+        android:id="@+id/text_selection"
         android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/fr"
-        android:scaleType="fitCenter"
-        />
+        android:layout_height="wrap_content"
+        app:shapeAppearanceOverlay="@style/RoundedCorners" />
 </LinearLayout>

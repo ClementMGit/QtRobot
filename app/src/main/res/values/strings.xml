@@ -9,4 +9,8 @@
     <string name="bouton_2" translatable="false">sad</string>
     <string name="bouton_3" translatable="false">scream</string>
     <string name="bouton_4" translatable="false">smiley</string>
+    <string name="qt_emotion">qt_emotion</string>
+    <string name="story1" translatable="false">QT decouvre les Couleurs 🌈</string>>
+    <string name="story2" translatable="false">QT cherche des calins 🤗</string>
+
 </resources>
