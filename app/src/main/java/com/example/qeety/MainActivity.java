@@ -1,5 +1,7 @@
 package com.example.qeety;
 
+import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -7,6 +9,10 @@ import android.widget.RelativeLayout;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.view.animation.AccelerateDecelerateInterpolator;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import com.example.qeety.Animation;
@@ -42,6 +48,12 @@ public class MainActivity extends Activity {
     private ImageButton next,before;
     RelativeLayout mainLayout;
 
+    String lang = "fr";
+
+    private String[] text;
+    private int textIndex = 0;
+    int textUsed = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +72,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Log.d("NextButton", "Bouton Next cliqué !");
+                if (textIndex < text.length) {
+                    textIndex++;
+                    phrase.setText(text[textIndex]);
+                }else{
+                    textIndex = 0;
+                    phrase.setText(text[textIndex]);
+                }
                 onNextClicked();
             }
         });
@@ -67,6 +86,13 @@ public class MainActivity extends Activity {
         before.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (textIndex == 0) {
+                    textIndex = 0;
+                    phrase.setText(text[textIndex]);
+                } else {
+                    textIndex--;
+                    phrase.setText(text[textIndex]);
+                }
                 Log.d("Previous", "Bouton Previous cliqué !");
                 onBeforeClicked();
             }
@@ -127,6 +153,7 @@ public class MainActivity extends Activity {
         localeMap.put(1, "en-US");
         localeMap.put(2, "es-ES");
 
+
         storyMap = new HashMap<>();
         storyMap.put(0,"story1");
         storyMap.put(1,"story2");
@@ -145,6 +172,13 @@ public class MainActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedLocale = localeMap.get(position);
+                if (position == 0) {
+                    lang = "fr";
+                } else if (position == 1) {
+                    lang = "en";
+                } else if (position == 2) {
+                    lang = "es";
+                }
                 if(selectedLocale != null){
                     LocaleManager localeManager = getSystemService(LocaleManager.class);
                     localeManager.setApplicationLocales(new LocaleList(Locale.forLanguageTag(selectedLocale)));
@@ -176,9 +210,12 @@ public class MainActivity extends Activity {
             }
         });
 
+
+
         storyChoice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                changeText(position);
 
             }
 
@@ -268,6 +305,41 @@ public class MainActivity extends Activity {
 
         // Si aucune émotion détectée, cacher l'image
         emotionImageView.setVisibility(View.VISIBLE);
+    }
+    private void changeText(int position){
+        if (position == 0){
+            if(lang.equals("fr")){
+                Log.d("story Change", storyMap.get(position));
+                InputStream storyContent = getResources().openRawResource(R.raw.story1_fr);
+                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
+                String result = s.hasNext() ? s.next() : "";
+                Log.d("story", result);
+                String[] storyLines = result.split("/n");
+                text = storyLines;
+                Log.d("story parse", Arrays.toString(storyLines));
+            } else if (lang.equals("en")) {
+                Log.d("story Change", storyMap.get(position));
+                InputStream storyContent = getResources().openRawResource(R.raw.story1_en);
+                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
+                String result = s.hasNext() ? s.next() : "";
+                Log.d("story", result);
+                String[] storyLines = result.split("/n");
+                text = storyLines;
+                Log.d("story parse", Arrays.toString(storyLines));
+            }
+
+
+        } else if (position == 1) {
+            //TODO à changer pour la seconde histoire
+            Log.d("story Change", storyMap.get(position));
+            InputStream storyContent = getResources().openRawResource(R.raw.story1_fr);
+            java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
+            String result = s.hasNext() ? s.next() : "";
+            String[] storyLines = result.split("\n");
+
+            Log.d("story parse", Arrays.toString(storyLines));
+        }
+
     }
 
 
