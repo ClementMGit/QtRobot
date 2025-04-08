@@ -148,7 +148,6 @@ public class MainActivity extends Activity {
         int[] flagImages = {
                 R.drawable.fr,  // Français
                 R.drawable.gb,  // Anglais
-                R.drawable.es   // Espagnol
         };
 
         int[] voiceImage = {
@@ -165,7 +164,6 @@ public class MainActivity extends Activity {
         localeMap = new HashMap<>();
         localeMap.put(0, "fr-FR");
         localeMap.put(1, "en-US");
-        localeMap.put(2, "es-ES");
 
 
         storyMap = new HashMap<>();
@@ -321,49 +319,29 @@ public class MainActivity extends Activity {
         emotionImageView.setVisibility(View.VISIBLE);
     }
     private void changeText(int position){
+        InputStream storyContent = null;
         if (position == 0){
             if(lang.equals("fr")){
-                Log.d("story Change", storyMap.get(position));
-                InputStream storyContent = getResources().openRawResource(R.raw.story1_fr);
-                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
-                String result = s.hasNext() ? s.next() : "";
-                Log.d("story", result);
-                String[] storyLines = result.split("\n");
-                text = storyLines;
-                Log.d("story parse", Arrays.toString(storyLines));
+                storyContent = getResources().openRawResource(R.raw.story1_fr);
             } else if (lang.equals("en")) {
-                Log.d("story Change", storyMap.get(position));
-                InputStream storyContent = getResources().openRawResource(R.raw.story1_en);
-                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
-                String result = s.hasNext() ? s.next() : "";
-                Log.d("story", result);
-                String[] storyLines = result.split("\n");
-                text = storyLines;
-                Log.d("story parse", Arrays.toString(storyLines));
+                storyContent = getResources().openRawResource(R.raw.story1_en);
             }
-
-
         } else if (position == 1) {
             if(lang.equals("fr")){
-                Log.d("story Change", storyMap.get(position));
-                InputStream storyContent = getResources().openRawResource(R.raw.story2_fr);
-                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
-                String result = s.hasNext() ? s.next() : "";
-                Log.d("story", result);
-                String[] storyLines = result.split("\n");
-                text = storyLines;
-                Log.d("story parse", Arrays.toString(storyLines));
+                storyContent = getResources().openRawResource(R.raw.story2_fr);
             } else if (lang.equals("en")) {
-                Log.d("story Change", storyMap.get(position));
-                InputStream storyContent = getResources().openRawResource(R.raw.stort2_en);
-                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
-                String result = s.hasNext() ? s.next() : "";
-                Log.d("story", result);
-                String[] storyLines = result.split("\n");
-                text = storyLines;
-                Log.d("story parse", Arrays.toString(storyLines));
+                storyContent = getResources().openRawResource(R.raw.stort2_en);
             }
         }
+
+        java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
+        String result = s.hasNext() ? s.next() : "";
+        Log.d("story", result);
+        String[] storyLines = result.split("\n");
+        text = storyLines;
+
+
+
 
         textIndex = 0;
         String[] buffer = text[textIndex].split("@//@");
