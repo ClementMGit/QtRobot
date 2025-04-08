@@ -114,12 +114,12 @@ public class MainActivity extends Activity {
     }
 
     private void onBeforeClicked() {
-        phrase.setText(" (c) Nouveau texte après Next [/papillon jaune] [arc-en-ciel] !");
+        //phrase.setText(" (c) Nouveau texte après Next [/papillon jaune] [arc-en-ciel] !");
     }
 
     private void onNextClicked() {
         // Exemple d'action : changer le texte de `phrase`
-        phrase.setText(" (int) Nouveau texte après Next [papillon jaune] [/arc-en-ciel] !");
+        //phrase.setText(" (int) Nouveau texte après Next [papillon jaune] [/arc-en-ciel] !");
 
         // Ajoute ici ce que tu veux faire quand on clique sur Next
     }
