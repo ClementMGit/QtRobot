@@ -38,12 +38,10 @@ import java.util.HashMap;
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 public class MainActivity extends Activity {
-    private final int NUM_BUTTERFLIES = 5; // Nombre de papillons
 
     private HashMap<Integer, String> localeMap; // Associe chaque image à un code de langue
     private  HashMap<Integer,String> storyMap;
     private TextView phrase;
-    private String lastText = "";
     private String voice = "F";
     private ImageButton next,before;
     RelativeLayout mainLayout;
@@ -52,92 +50,42 @@ public class MainActivity extends Activity {
 
     private String[] text;
     private int textIndex = 0;
-    int textUsed = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainLayout = findViewById(R.id.mainLayout); // Assurez-vous que l'ID est bien défini
-
-        if (mainLayout == null) {
-            throw new NullPointerException("mainLayout is null! Check activity_main.xml.");
-        }
-        /////////////////////generateButterflies();  // Génère plusieurs papillons avec animation
-
+        mainLayout = findViewById(R.id.mainLayout);
         initLocalePicker();
         next = findViewById(R.id.next_btn);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("NextButton", "Bouton Next cliqué !");
-                Log.d("text", Arrays.toString(text));
-                Log.d("textIndex", String.valueOf(textIndex));
-                Log.d("text.length", String.valueOf(text.length));
                 if (textIndex < text.length-1) {
                     textIndex++;
-
-                    String[] buffer = text[textIndex].split("@//@");
-                    Log.d("buffer", Arrays.toString(buffer));
-                    phrase.setText(buffer[1]);
-                }else{
-                    //textIndex = 0;
-                    String[] buffer = text[textIndex].split("@//@");
-                    Log.d("buffer 1", buffer[1]);
-                    phrase.setText(buffer[1]);
                 }
-                verifsianim(text[textIndex]);
-                onNextClicked();
+                changeText();
             }
         });
         before = findViewById(R.id.previous_btn);
         before.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textIndex == 0) {
-                    textIndex = 0;
-                    String[] buffer = text[textIndex].split("@//@");
-                    phrase.setText(buffer[1]);
-                } else {
+                if(textIndex !=0){
                     textIndex--;
-                    String[] buffer = text[textIndex].split("@//@");
-                    Log.d("buffer 1", buffer[1]);
-                    phrase.setText(buffer[1]);
-
                 }
-                Log.d("Previous", "Bouton Previous cliqué !");
-                verifsianim(text[textIndex]);
-                onBeforeClicked();
+                changeText();
             }
         });
         phrase = findViewById(R.id.phrase);
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                String currentText = phrase.getText().toString();
-                if (!currentText.equals(lastText)) {
-                    lastText = currentText;
-                    onTextChanged(currentText);
-                }
-                handler.postDelayed(this, 500); // Vérifie toutes les 500ms
-            }
-        }, 500);
     }
-
-    private void onBeforeClicked() {
-        //phrase.setText(" (c) Nouveau texte après Next [/papillon jaune] [arc-en-ciel] !");
+    private void changeText(){
+        String[] buffer = text[textIndex].split("@//@");
+        phrase.setText(buffer[1]);
+        verifsianim(text[textIndex]);
     }
-
-    private void onNextClicked() {
-        // Exemple d'action : changer le texte de `phrase`
-        //phrase.setText(" (int) Nouveau texte après Next [papillon jaune] [/arc-en-ciel] !");
-
-        // Ajoute ici ce que tu veux faire quand on clique sur Next
-    }
-
 
     private void initLocalePicker() {
         Spinner spinner = findViewById(R.id.localePicker);
@@ -188,8 +136,6 @@ public class MainActivity extends Activity {
                     lang = "fr";
                 } else if (position == 1) {
                     lang = "en";
-                } else if (position == 2) {
-                    lang = "es";
                 }
                 if(selectedLocale != null){
                     LocaleManager localeManager = getSystemService(LocaleManager.class);
@@ -227,10 +173,8 @@ public class MainActivity extends Activity {
         storyChoice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                changeText(position);
-
+                changeStory(position);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -238,11 +182,27 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void onTextChanged(String newText) {
-        Log.d("TextChange", "Le texte a changé : " + newText);
-        // Ajoute ici l'action à effectuer quand le texte change
+    private void changeStory(int position){
+        InputStream storyContent = null;
+        if (position == 0){
+            if(lang.equals("fr")){
+                storyContent = getResources().openRawResource(R.raw.story1_fr);
+            } else if (lang.equals("en")) {
+                storyContent = getResources().openRawResource(R.raw.story1_en);
+            }
+        } else if (position == 1) {
+            if(lang.equals("fr")){
+                storyContent = getResources().openRawResource(R.raw.story2_fr);
+            } else if (lang.equals("en")) {
+                storyContent = getResources().openRawResource(R.raw.stort2_en);
+            }
+        }
 
-
+        java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
+        String result = s.hasNext() ? s.next() : "";
+        text = result.split("\n");
+        textIndex = 0;
+        changeText();
     }
     private void verifsianim(String texte) {
         if (texte == null || texte.isEmpty()) return;
@@ -318,39 +278,4 @@ public class MainActivity extends Activity {
         // Si aucune émotion détectée, cacher l'image
         emotionImageView.setVisibility(View.VISIBLE);
     }
-    private void changeText(int position){
-        InputStream storyContent = null;
-        if (position == 0){
-            if(lang.equals("fr")){
-                storyContent = getResources().openRawResource(R.raw.story1_fr);
-            } else if (lang.equals("en")) {
-                storyContent = getResources().openRawResource(R.raw.story1_en);
-            }
-        } else if (position == 1) {
-            if(lang.equals("fr")){
-                storyContent = getResources().openRawResource(R.raw.story2_fr);
-            } else if (lang.equals("en")) {
-                storyContent = getResources().openRawResource(R.raw.stort2_en);
-            }
-        }
-
-        java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
-        String result = s.hasNext() ? s.next() : "";
-        Log.d("story", result);
-        String[] storyLines = result.split("\n");
-        text = storyLines;
-
-
-
-
-        textIndex = 0;
-        String[] buffer = text[textIndex].split("@//@");
-        phrase.setText(buffer[1]);
-        verifsianim(text[textIndex]);
-
-    }
-
-
-
-
 }
