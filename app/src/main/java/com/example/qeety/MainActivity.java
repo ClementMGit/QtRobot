@@ -72,13 +72,22 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Log.d("NextButton", "Bouton Next cliqué !");
-                if (textIndex < text.length) {
+                Log.d("text", Arrays.toString(text));
+                Log.d("textIndex", String.valueOf(textIndex));
+                Log.d("text.length", String.valueOf(text.length));
+                if (textIndex < text.length-1) {
                     textIndex++;
-                    phrase.setText(text[textIndex]);
+
+                    String[] buffer = text[textIndex].split("@//@");
+                    Log.d("buffer", Arrays.toString(buffer));
+                    phrase.setText(buffer[1]);
                 }else{
                     textIndex = 0;
-                    phrase.setText(text[textIndex]);
+                    String[] buffer = text[textIndex].split("@//@");
+                    Log.d("buffer 1", buffer[1]);
+                    phrase.setText(buffer[1]);
                 }
+                verifsianim(text[textIndex]);
                 onNextClicked();
             }
         });
@@ -88,12 +97,17 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if (textIndex == 0) {
                     textIndex = 0;
-                    phrase.setText(text[textIndex]);
+                    String[] buffer = text[textIndex].split("@//@");
+                    phrase.setText(buffer[1]);
                 } else {
                     textIndex--;
-                    phrase.setText(text[textIndex]);
+                    String[] buffer = text[textIndex].split("@//@");
+                    Log.d("buffer 1", buffer[1]);
+                    phrase.setText(buffer[1]);
+
                 }
                 Log.d("Previous", "Bouton Previous cliqué !");
+                verifsianim(text[textIndex]);
                 onBeforeClicked();
             }
         });
@@ -229,7 +243,7 @@ public class MainActivity extends Activity {
     private void onTextChanged(String newText) {
         Log.d("TextChange", "Le texte a changé : " + newText);
         // Ajoute ici l'action à effectuer quand le texte change
-        verifsianim(newText);
+
 
     }
     private void verifsianim(String texte) {
@@ -339,6 +353,11 @@ public class MainActivity extends Activity {
 
             Log.d("story parse", Arrays.toString(storyLines));
         }
+
+        textIndex = 0;
+        String[] buffer = text[textIndex].split("@//@");
+        phrase.setText(buffer[1]);
+        verifsianim(text[textIndex]);
 
     }
 
