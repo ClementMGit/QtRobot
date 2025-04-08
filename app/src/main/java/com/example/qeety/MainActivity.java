@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
                     Log.d("buffer", Arrays.toString(buffer));
                     phrase.setText(buffer[1]);
                 }else{
-                    textIndex = 0;
+                    //textIndex = 0;
                     String[] buffer = text[textIndex].split("@//@");
                     Log.d("buffer 1", buffer[1]);
                     phrase.setText(buffer[1]);
@@ -328,7 +328,7 @@ public class MainActivity extends Activity {
                 java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
                 String result = s.hasNext() ? s.next() : "";
                 Log.d("story", result);
-                String[] storyLines = result.split("/n");
+                String[] storyLines = result.split("\n");
                 text = storyLines;
                 Log.d("story parse", Arrays.toString(storyLines));
             } else if (lang.equals("en")) {
@@ -337,21 +337,32 @@ public class MainActivity extends Activity {
                 java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
                 String result = s.hasNext() ? s.next() : "";
                 Log.d("story", result);
-                String[] storyLines = result.split("/n");
+                String[] storyLines = result.split("\n");
                 text = storyLines;
                 Log.d("story parse", Arrays.toString(storyLines));
             }
 
 
         } else if (position == 1) {
-            //TODO à changer pour la seconde histoire
-            Log.d("story Change", storyMap.get(position));
-            InputStream storyContent = getResources().openRawResource(R.raw.story1_fr);
-            java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
-            String result = s.hasNext() ? s.next() : "";
-            String[] storyLines = result.split("\n");
-
-            Log.d("story parse", Arrays.toString(storyLines));
+            if(lang.equals("fr")){
+                Log.d("story Change", storyMap.get(position));
+                InputStream storyContent = getResources().openRawResource(R.raw.story2_fr);
+                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
+                String result = s.hasNext() ? s.next() : "";
+                Log.d("story", result);
+                String[] storyLines = result.split("\n");
+                text = storyLines;
+                Log.d("story parse", Arrays.toString(storyLines));
+            } else if (lang.equals("en")) {
+                Log.d("story Change", storyMap.get(position));
+                InputStream storyContent = getResources().openRawResource(R.raw.stort2_en);
+                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
+                String result = s.hasNext() ? s.next() : "";
+                Log.d("story", result);
+                String[] storyLines = result.split("\n");
+                text = storyLines;
+                Log.d("story parse", Arrays.toString(storyLines));
+            }
         }
 
         textIndex = 0;

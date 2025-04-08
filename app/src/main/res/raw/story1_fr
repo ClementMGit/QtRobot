@@ -1,1 +1,30 @@
-(b)@//@Un matin,/n(b) @//@ le petit robot QT se réveille /n(tt) @//@ et regarde par la fenêtre. /n(e) @//@Oh ! Que c’est joli dehors ! /n(e) @//@ s’exclame-t-il. /n(s)@//@ Mais... /n(s)@//@pourquoi tout est coloré ? /n(s)@//@QT décide de partir à l’aventure /n(s)@//@pour comprendre les couleurs. /n[papillon jaune]  @//@ Il rencontre un papillon jaune. /n(cc)@//@ Bonjour, joli papillon ! /n(int)@//@Pourquoi es-tu tout jaune ? /n(int)@//@Le papillon répond : /n(int)@//@ Parce que le jaune, /n@//@ c’est la couleur du soleil ! /n[/papillon jaune]@//@QT continue /n(int)@//@ et trouve une grenouille verte. /n(cc)[grenouille] @//@ Bonjour, grenouille ! /n(int) @//@  Pourquoi es-tu verte ? /n@//@La grenouille rigole : /n@//@Parce que le vert, c’est la couleur de l’herbe /n@//@ où je saute ! /n[/grenouille] [arc en ciel] @//@ Enfin, QT voit un arc-en-ciel /n@//@ dans le ciel. /n(e) @//@ Wow ! Toutes les couleurs sont là ! /n@//@ Jaune, vert, bleu, rouge... /n(e)@//@ C’est magnifique ! /n[/arc en ciel] (sou) @//@ QT sourit : /n@//@J'ai compris ! /n@//@ Les couleurs rendent le monde plus beau.
+(b)@//@Un matin,
+(b) @//@ le petit robot QT se réveille
+(tt) @//@ et regarde par la fenêtre.
+(e) @//@Oh ! Que c’est joli dehors !
+(e) @//@ s’exclame-t-il.
+(s)@//@ Mais...
+(s)@//@pourquoi tout est coloré ?
+(s)@//@QT décide de partir à l’aventure
+(s)@//@pour comprendre les couleurs.
+[papillon jaune]  @//@ Il rencontre un papillon jaune.
+(cc)@//@ Bonjour, joli papillon !
+(int)@//@Pourquoi es-tu tout jaune ?
+(int)@//@Le papillon répond :
+(int)@//@ Parce que le jaune,
+@//@ c’est la couleur du soleil !
+[/papillon jaune]@//@QT continue
+(int)@//@ et trouve une grenouille verte.
+(cc)[grenouille] @//@ Bonjour, grenouille !
+(int) @//@  Pourquoi es-tu verte ?
+@//@La grenouille rigole :
+@//@Parce que le vert, c’est la couleur de l’herbe
+@//@ où je saute !
+[/grenouille] [arc en ciel] @//@ Enfin, QT voit un arc-en-ciel
+@//@ dans le ciel.
+(e) @//@ Wow ! Toutes les couleurs sont là !
+@//@ Jaune, vert, bleu, rouge...
+(e)@//@ C’est magnifique !
+[/arc en ciel] (sou) @//@ QT sourit :
+@//@J'ai compris !
+@//@ Les couleurs rendent le monde plus beau.
