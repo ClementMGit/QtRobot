@@ -1,23 +1,13 @@
 package com.example.qeety;
 
-import android.annotation.SuppressLint;
-import android.content.res.Resources;
-import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 
-import com.example.qeety.Animation;
 import android.os.Handler;
-import android.os.Looper;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,8 +21,6 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
-import com.bumptech.glide.Glide;
-
 import java.util.Locale;
 import java.util.HashMap;
 
@@ -43,9 +31,11 @@ public class MainActivity extends Activity {
     private  HashMap<Integer,String> storyMap;
     private TextView phrase;
     private String voice = "F";
+    MediaPlayer voiceAudio ;
     private ImageButton next,before;
     RelativeLayout mainLayout;
-
+    private int storySelected = 0;
+    private InputStream storyContent;
     String lang = "fr";
 
     private String[] text;
@@ -62,31 +52,67 @@ public class MainActivity extends Activity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textIndex < text.length-1) {
-                    textIndex++;
+                //Commenter le if pour pouvoir cliquer vite sans attendre la fin de l'audio
+                if(!voiceAudio.isPlaying()){
+                    if (textIndex < text.length-1) {
+                        textIndex++;
+                    }
+                    changeText();
                 }
-                changeText();
+
+
+
             }
         });
         before = findViewById(R.id.previous_btn);
         before.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(textIndex !=0){
-                    textIndex--;
+                //Commenter le if pour pouvoir cliquer vite sans attendre la fin de l'audio
+                if(!voiceAudio.isPlaying()) {
+                    if (textIndex != 0) {
+                        textIndex--;
+                    }
+                    changeText();
                 }
-                changeText();
             }
         });
         phrase = findViewById(R.id.phrase);
-
+        changeFiles();
     }
     private void changeText(){
-        String[] buffer = text[textIndex].split("@//@");
-        phrase.setText(buffer[1]);
-        verifsianim(text[textIndex]);
-    }
+    String[] buffer = text[textIndex].split("@//@");
 
+    //Change le texte
+    phrase.setText(buffer[1]);
+    //Animer éventuellement
+    verifsianim(text[textIndex]);
+
+    //Lire l'audio
+        if(buffer.length > 2){
+        // Parse les timestamps (ex: "2.0 4.2")
+        String[] times = buffer[2].trim().split(" ");
+        int startTime = (int)(Float.parseFloat(times[0]) * 1000); // secondes → ms
+
+        voiceAudio.seekTo(startTime);
+        voiceAudio.start();
+        if(textIndex+1<text.length){
+            String[] buffer_next = text[textIndex+1].split("@//@");
+            if(buffer_next.length>2){
+                int endTime = (int)(Float.parseFloat(buffer_next[2]) * 1000);
+
+                // Arrêter l'audio à la fin du segment
+                new Handler().postDelayed(() -> {
+                    if (voiceAudio.isPlaying()) {
+                        voiceAudio.pause();
+                    }
+                }, endTime - startTime);
+            }
+
+        }
+
+    }
+}
     private void initLocalePicker() {
         Spinner spinner = findViewById(R.id.localePicker);
         Spinner voiceChoice = findViewById(R.id.voicePicker);
@@ -105,18 +131,16 @@ public class MainActivity extends Activity {
 
         int[] storyText = {
                 R.string.story1, //Titre de l'histoire 1
-                R.string.story2  //Titre de l'histoire 2
+                R.string.story2,
+                R.string.story3,
+                R.string.story4,
+                R.string.story5,
         };
 
         // Associer les positions aux codes de langue
         localeMap = new HashMap<>();
         localeMap.put(0, "fr-FR");
         localeMap.put(1, "en-US");
-
-
-        storyMap = new HashMap<>();
-        storyMap.put(0,"story1");
-        storyMap.put(1,"story2");
 
 
         ImageSpinnerAdapter adapter = new ImageSpinnerAdapter(this, flagImages);
@@ -154,15 +178,17 @@ public class MainActivity extends Activity {
                 if (position == 0){
                     //Cas pour la voix femme
                     voice = "F";
-                    Log.d("voice Change", "Voice changed to Femme (\"F\") ");
-                } else if (position == 1) {
-                    //Cas pour le voix homme
-                    voice = "H";
-                    Log.d("voice Change", "Voice changed to MEN (\"H\") ");
                 }
-
+                else{
+                    voice="H";
+                }
+                changeFiles();
+                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
+                String result = s.hasNext() ? s.next() : "";
+                text = result.split("\n");
+                textIndex = 0;
+                changeText();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -173,7 +199,14 @@ public class MainActivity extends Activity {
         storyChoice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                changeStory(position);
+
+                storySelected =position;
+                changeFiles();
+                java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
+                String result = s.hasNext() ? s.next() : "";
+                text = result.split("\n");
+                textIndex = 0;
+                changeText();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -181,29 +214,106 @@ public class MainActivity extends Activity {
             }
         });
     }
-
-    private void changeStory(int position){
-        InputStream storyContent = null;
-        if (position == 0){
+    private void changeFiles(){
+        if(voice.equals("F")){
             if(lang.equals("fr")){
-                storyContent = getResources().openRawResource(R.raw.story1_fr);
+                switch (storySelected){
+                    case 0:
+                        storyContent = getResources().openRawResource(R.raw.fr_story1_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio1_f);
+                        break;
+                    case 1:
+                        storyContent = getResources().openRawResource(R.raw.fr_story2_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio2_f);
+                        break;
+                    case 2:
+                        storyContent = getResources().openRawResource(R.raw.fr_story3_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio3_f);
+                        break;
+                    case 3:
+                        storyContent = getResources().openRawResource(R.raw.fr_story4_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio4_f);
+                        break;
+                    case 4:
+                        storyContent = getResources().openRawResource(R.raw.fr_story5_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio5_f);
+                        break;
+                }
             } else if (lang.equals("en")) {
-                storyContent = getResources().openRawResource(R.raw.story1_en);
+                switch (storySelected){
+                    case 0:
+                        storyContent = getResources().openRawResource(R.raw.en_story1_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio1_f);
+                        break;
+                    case 1:
+                        storyContent = getResources().openRawResource(R.raw.en_story2_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio2_f);
+                        break;
+                    case 2:
+                        storyContent = getResources().openRawResource(R.raw.en_story3_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio3_f);
+                        break;
+                    case 3:
+                        storyContent = getResources().openRawResource(R.raw.en_story4_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio4_f);
+                        break;
+                    case 4:
+                        storyContent = getResources().openRawResource(R.raw.en_story5_f);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio5_f);
+                        break;
+                }
             }
-        } else if (position == 1) {
+        } else if (voice.equals("H")) {
             if(lang.equals("fr")){
-                storyContent = getResources().openRawResource(R.raw.story2_fr);
+                switch (storySelected){
+                    case 0:
+                        storyContent = getResources().openRawResource(R.raw.fr_story1_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio1_h);
+                        break;
+                    case 1:
+                        storyContent = getResources().openRawResource(R.raw.fr_story2_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio2_h);
+                        break;
+                    case 2:
+                        storyContent = getResources().openRawResource(R.raw.fr_story3_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio3_h);
+                        break;
+                    case 3:
+                        storyContent = getResources().openRawResource(R.raw.fr_story4_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio4_h);
+                        break;
+                    case 4:
+                        storyContent = getResources().openRawResource(R.raw.fr_story5_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio5_h);
+                        break;
+                }
             } else if (lang.equals("en")) {
-                storyContent = getResources().openRawResource(R.raw.stort2_en);
+                switch (storySelected){
+                    case 0:
+                        storyContent = getResources().openRawResource(R.raw.en_story1_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio1_h);
+                        break;
+                    case 1:
+                        storyContent = getResources().openRawResource(R.raw.en_story2_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio2_h);
+                        break;
+                    case 2:
+                        storyContent = getResources().openRawResource(R.raw.en_story3_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio3_h);
+                        break;
+                    case 3:
+                        storyContent = getResources().openRawResource(R.raw.en_story4_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio4_h);
+                        break;
+                    case 4:
+                        storyContent = getResources().openRawResource(R.raw.en_story5_h);
+                        voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio5_h);
+                        break;
+                }
             }
         }
-
-        java.util.Scanner s = new java.util.Scanner(storyContent).useDelimiter("\\A");
-        String result = s.hasNext() ? s.next() : "";
-        text = result.split("\n");
-        textIndex = 0;
-        changeText();
     }
+
     private void verifsianim(String texte) {
         if (texte == null || texte.isEmpty()) return;
 

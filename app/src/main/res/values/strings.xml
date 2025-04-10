@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Qeety</string>
-    <string name="test">Ceci est un test Ceci est un testCeci est un testCeci est un testCeci est un test</string>
     <string name="qtrobot" translatable="false">QtRobot</string>
     <string name="bouton_pr_c_dent" translatable="false">previous</string>
     <string name="bouton_suivant" translatable="false">next</string>
@@ -9,8 +8,11 @@
     <string name="bouton_2" translatable="false">sad</string>
     <string name="bouton_3" translatable="false">scream</string>
     <string name="bouton_4" translatable="false">smiley</string>
-    <string name="qt_emotion">qt_emotion</string>
-    <string name="story1" translatable="false">QT decouvre les Couleurs 🌈</string>>
-    <string name="story2" translatable="false">QT cherche des calins 🤗</string>
+    <string name="qt_emotion" translatable="false">qt_emotion</string>
+    <string name="story1">QT decouvre les Couleurs 🌈</string>>
+    <string name="story2">QT cherche des calins 🤗</string>
+    <string name="story3">QT apprend à dire merci</string>
+    <string name="story4">QT et la chasse aux étoiles</string>
+    <string name="story5">QT apprend à partager</string>
 
 </resources>

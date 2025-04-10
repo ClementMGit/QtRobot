@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Qeety</string>
-    <string name="test">This is a test</string>
     <string name="story1">QT Discovers Colors 🌈</string>
     <string name="story2">QT Looks for a Hug 🤗</string>
+    <string name="story3">QT learns to say thank you</string>
+    <string name="story4">QT and the chase for a star</string>
+    <string name="story5">QT learns to share</string>
 
 
 </resources>
