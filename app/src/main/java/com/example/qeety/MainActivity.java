@@ -81,38 +81,38 @@ public class MainActivity extends Activity {
         changeFiles();
     }
     private void changeText(){
-    String[] buffer = text[textIndex].split("@//@");
+        String[] buffer = text[textIndex].split("@//@");
 
-    //Change le texte
-    phrase.setText(buffer[1]);
-    //Animer éventuellement
-    verifsianim(text[textIndex]);
+        //Change le texte
+        phrase.setText(buffer[1]);
+        //Animer éventuellement
+        verifsianim(text[textIndex]);
+        //Lire l'audio
+        if(buffer.length > 2 && !buffer[2].trim().isEmpty()){
+            String time = buffer[2].trim();
+            int startTime = (int)(Float.parseFloat(time) * 1000); // secondes → ms
 
-    //Lire l'audio
-        if(buffer.length > 2){
-        // Parse les timestamps (ex: "2.0 4.2")
-        String[] times = buffer[2].trim().split(" ");
-        int startTime = (int)(Float.parseFloat(times[0]) * 1000); // secondes → ms
+            voiceAudio.seekTo(startTime);
+            voiceAudio.start();
+            if(textIndex+1<text.length){
+                String[] buffer_next = text[textIndex+1].split("@//@");
+                if(buffer_next.length>2){
+                    int endTime = (int)(Float.parseFloat(buffer_next[2]) * 1000);
 
-        voiceAudio.seekTo(startTime);
-        voiceAudio.start();
-        if(textIndex+1<text.length){
-            String[] buffer_next = text[textIndex+1].split("@//@");
-            if(buffer_next.length>2){
-                int endTime = (int)(Float.parseFloat(buffer_next[2]) * 1000);
+                    // Arrêter l'audio à la fin du segment
+                    new Handler().postDelayed(() -> {
+                        if (voiceAudio.isPlaying()) {
+                            voiceAudio.pause();
+                        }
+                    }, endTime - startTime);
+                }
 
-                // Arrêter l'audio à la fin du segment
-                new Handler().postDelayed(() -> {
-                    if (voiceAudio.isPlaying()) {
-                        voiceAudio.pause();
-                    }
-                }, endTime - startTime);
             }
 
         }
-
     }
-}
+
+
     private void initLocalePicker() {
         Spinner spinner = findViewById(R.id.localePicker);
         Spinner voiceChoice = findViewById(R.id.voicePicker);
