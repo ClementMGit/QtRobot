@@ -1,18 +1,18 @@
 @//@ Start@//@
-@//@ Qt learns to say thank you.@//@0.0
-@//@ One day, Qt receives a gift from his friend Mia, a small, shiny flower.@//@4.9
-@//@ Qt looks at the flower and says, oh it's beautiful, but Mia looks a little disappointed.@//@11.3
+(e) [mia] @//@ Qt learns to say thank you.@//@0.0
+(et) [fleur] @//@ One day, Qt receives a gift from his friend Mia, a small, shiny flower.@//@4.9
+(e) @//@ Qt looks at the flower and says, oh it's beautiful, but Mia looks a little disappointed.@//@11.3
 @//@ Qt doesn't understand.@//@20.5
-@//@ He goes to see grandpa Ol.@//@22.6
-@//@ Grandpa Ol, why is Mia sad?@//@25.4
-@//@ I like to get a gift.@//@28.0
+[int] [hibou] @//@ He goes to see grandpa Ol.@//@22.6
+(int)(s) @//@ Grandpa Ol, why is Mia sad?@//@25.4
+(s) @//@ I like to get a gift.@//@28.0
 @//@ Grandpa Ol smiles.@//@30.1
 @//@ You liked it, but did you say the magic word?@//@32.1
-@//@ What magic word asks Qt curious?@//@37.0
+(int) @//@ What magic word asks Qt curious?@//@37.0
 @//@ The word thank you, of course.@//@41.0
-@//@ Qt goes back to Mia.@//@44.8
-@//@ Mia, thank you for the lovely flower.@//@47.0
-@//@ It makes me very happy.@//@51.1
+[souris] [mia] @//@ Qt goes back to Mia.@//@44.8
+(souris) @//@ Mia, thank you for the lovely flower.@//@47.0
+(souris) @//@ It makes me very happy.@//@51.1
 @//@ Mia smiles and jumps with joy.@//@53.7
-@//@ Qt then understands that saying thank you makes everyone happy.@//@57.2
+(souris) @//@ Qt then understands that saying thank you makes everyone happy.@//@57.2
 @//@ The End.@//@
