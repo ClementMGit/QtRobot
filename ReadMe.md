@@ -61,6 +61,7 @@ Chaque histoire est conçue pour transmettre des émotions positives et aider le
 
 ## 📂 Structure du projet
 QeeTy/
+
 ├── .idea/                # Fichiers de configuration Android Studio (non modifiables)
 
 ├── app/                  # Dossier principal de l'application Android
