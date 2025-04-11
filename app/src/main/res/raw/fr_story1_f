@@ -1,18 +1,18 @@
 @//@ Commencer.@//@
-@//@ Coutie découvre des couleurs.@//@0.0
-@//@ Un matin, le petit robot Coutie se réveille et regarde par la fenêtre.@//@2.4
-@//@ « Oh, que c'est joli dehors, ça se claime t-il ! Mais pourquoi tout est coloré ? »@//@6.9
-@//@ Coutie décide de partir à l'aventure pour comprendre les couleurs.@//@12.4
-@//@ Il rencontre un papier aux jeunes.@//@15.9
-@//@ « Bonjour, je lis papier, pourquoi tu tout jeûne ? »@//@18.0
-@//@ Le papier on répond, parce que le jeûne c'est la couleur du soleil.@//@21.4
-@//@ Coutie continue et trouve une grenouille verte.@//@24.7
-@//@ « Bonjour, grenouille ! Pourquoi est-tu verte ? »@//@28.4
-@//@ La grenouille rigole.@//@31.5
-@//@ Parce que le verre, c'est la couleur de l'air bougeau sote.@//@32.8
-@//@ Enfin, Coutie voit un arc en ciel dans le ciel.@//@36.7
-@//@ « Wow ! Toutes les couleurs sont là ! »@//@39.6
-@//@ « Jeûne, ver, bleu, rouge ! C'est magnifique ! »@//@42.3
-@//@ Coutie souris, j'ai compris !@//@46.7
+(b)@//@ QT découvre des couleurs.@//@0.0
+(b)@//@ Un matin, le petit robot QT se réveille et regarde par la fenêtre.@//@2.4
+(e)@//@ « Oh ! Que c’est joli dehors ! » s’exclame-t-il. « Mais pourquoi tout est coloré ? »@//@6.9
+(s)@//@ QT décide de partir à l’aventure pour comprendre les couleurs.@//@12.4
+[papillon jaune]@//@ Il rencontre un papillon jaune.@//@15.9
+(cc)@//@ « Bonjour, joli papillon ! Pourquoi es-tu tout jaune ? »@//@18.0
+(int)@//@ Le papillon répond : « Parce que le jaune, c’est la couleur du soleil ! »@//@21.4
+[/papillon jaune]@//@ QT continue et trouve une grenouille verte.@//@24.7
+(cc)[grenouille]@//@ « Bonjour, grenouille ! Pourquoi es-tu verte ? »@//@28.4
+(int)@//@ La grenouille rigole.@//@31.5
+@//@ « Parce que le vert, c’est la couleur de l’herbe où je saute ! »@//@32.8
+[/grenouille][arc-en-ciel]@//@ Enfin, QT voit un arc-en-ciel dans le ciel.@//@36.7
+(e)@//@ « Wow ! Toutes les couleurs sont là ! »@//@39.6
+@//@ « Jaune, vert, bleu, rouge... C’est magnifique ! »@//@42.3
+(sou)@//@ QT sourit : « J'ai compris ! »@//@46.7
 @//@ Les couleurs rendent le monde plus beau.@//@48.8
 @//@ Fin.@//@

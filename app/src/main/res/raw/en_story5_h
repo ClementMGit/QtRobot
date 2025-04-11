@@ -1,10 +1,13 @@
-@//@ Start@//@
-@//@ QT learns to share. QT loves chocolate cookies. One day he has a huge pack.@//@0.0
-@//@ Yeah, all for me he rejoices. But every time he takes a bite, he sees his friends playing@//@8.4
-@//@ nearby. Leo passes by with a smile. Mia waves at him. Tiko, the little dog, works@//@16.1
-@//@ his tail. QT looks at his pack of cookies and things. They would probably love to test@//@24.8
-@//@ them. But if I share, I love less. If things for a moment then decides to give some to@//@32.4
-@//@ each one of his friends. They all sit together and enjoy the cookies. They love,@//@42.7
-@//@ share toys and QT feels very happy. It's funny, QT thinks. I have fewer cookies but so@//@50.6
-@//@ much more joy.@//@61.1
-@//@ The End.@//@
+@//@ Commencer.@//@
+(l) @//@ QT apprend à partager. QT adore les biscuits au chocolat. Un jour, il en a un énorme paquet.@//@0.0
+— (l) @//@ "Miam ! Tous pour moi !" se réjouit-il.@//@9.0
+(soupir) @//@ Mais à chaque fois qu’il croque un biscuit, il voit ses amis jouer non loin.@//@8.4
+[Leo] @//@ Léo passe en souriant.@//@16.1
+[mia] @//@ Mia le salue de la main.@//@16.1
+[chien] @//@ Tiko, le petit chien, remue la queue.@//@16.1
+(tt) @//@ QT regarde son paquet plein de biscuits et pense :@//@24.8
+— (soupir) @//@ "Ils aimeraient sûrement goûter… mais si je partage, j’en aurai moins."@//@24.8
+(int) @//@ Il réfléchit un moment, puis décide d’en donner à chacun de ses amis.@//@32.4
+(souris) @//@ Ils s’assoient tous ensemble pour goûter les biscuits. Ils rigolent, partagent des histoires, et QT se sent très heureux.@//@42.7
+— (souris) @//@ "C’est drôle," pense QT, "j’ai moins de biscuits… mais beaucoup plus de joie !"@//@50.6
+@//@ Fin.@//@

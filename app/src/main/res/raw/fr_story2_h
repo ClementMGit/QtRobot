@@ -1,21 +1,22 @@
 @//@ Commencer.@//@
-@//@ Cuité cherche un câlin.@//@0.0
-@//@ Aujourd'hui, cuité c'est un peu triste.@//@3.0
-@//@ Je crois que j'ai besoin d'un câlin pour me sentir mieux.@//@6.0
-@//@ Cuité par la recherche d'un câlin.@//@9.0
-@//@ Il demanda un an.@//@12.0
-@//@ Arbe, peux-tu me faire un câlin ?@//@14.0
-@//@ L'arbre lui répond doucement.@//@16.0
-@//@ Je ne peux pas bouger, mais tu peux t'adoucer à moi.@//@18.0
-@//@ Cuité s'appuie contre l'arbre, c'est doux, mais c'est pas un vrai câlin.@//@21.0
-@//@ Cuité continue et trouve un chat.@//@26.0
-@//@ Chatons, veux-tu me faire un câlin ?@//@29.0
-@//@ Le charon rône et fraude sa tête contre cuité.@//@32.0
-@//@ C'est gentil, mais ce n'est encore pas un câlin complet, pence cuité.@//@35.0
-@//@ Puis, cuité vois son ami le haut.@//@40.0
-@//@ Le haut, j'ai besoin d'un câlin.@//@42.0
-@//@ Le haut ouvre grand s'ébar et sert cuité fort contre lui.@//@45.0
-@//@ Cuité 6 000 de bonheur.@//@49.0
-@//@ C'était ça que je cherchais.@//@51.0
-@//@ Un câlin d'ami, c'est magnifique, c'est magique.@//@53.0
+(t)@//@ QT cherche un câlin.@//@0.0
+(t)@//@ Aujourd’hui, QT se sent un peu triste.@//@3.0
+(t)@//@ Je crois que j'ai besoin d’un câlin pour me sentir mieux.@//@6.0
+@//@ QT part à la recherche d’un câlin.@//@9.0
+[int][arbre]@//@ Il demande à un arbre :@//@12.0
+(int)@//@ "Arbre, peux-tu me faire un câlin ?@//@14.0
+@//@ L’arbre lui répond doucement :@//@16.0
+@//@ Je ne peux pas bouger, mais tu peux t’adosser à moi.@//@18.0
+@//@ QT s’appuie contre l’arbre.@//@21.0
+(soupir)@//@C’est doux… mais pas un vrai câlin.@//@21.6
+[/arbre]@//@ QT continue et trouve un chat.@//@26.0
+[int][chat]@//@ Chaton, veux-tu me faire un câlin ?@//@29.0
+@//@ Le chat ronronne et frotte sa tête contre QT.@//@32.0
+(soupir)@//@ C’est gentil mais ce n’est pas encore un câlin complet, pense QT.@//@35.0
+[/chat][Leo]@//@ Puis QT voit son ami Léo.@//@40.0
+@//@ Léo, j’ai besoin d’un câlin.@//@42.0
+@//@ Léo ouvre grand ses bras et serre QT fort contre lui.@//@45.0
+(et)@//@ QT s’illumine de bonheur.@//@49.0
+(sou)@//@ C’était ça que je cherchais !@//@51.0
+(sou)(et)@//@ Un câlin d’ami, c’est magique.@//@53.0
 @//@ Fin.@//@

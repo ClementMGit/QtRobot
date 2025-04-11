@@ -151,7 +151,10 @@
         android:layout_below="@+id/layout_text"
         android:orientation="horizontal"
         android:gravity="center"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        >
 
         <ImageButton
             android:layout_width="0dp"
@@ -160,7 +163,10 @@
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/bouton_1"
             android:scaleType="fitCenter"
-            android:src="@drawable/anxious" />
+            android:src="@drawable/anxious"
+            android:id="@+id/buttonAnxious"
+            android:focusable="false"
+            />
 
         <ImageButton
             android:layout_width="0dp"
@@ -169,7 +175,9 @@
             android:src="@drawable/coeur"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_2"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/buttonHeart"
+            />
 
         <ImageButton
             android:layout_width="0dp"
@@ -178,7 +186,9 @@
             android:src="@drawable/smiley"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_3"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/buttonStars"
+            />
 
         <ImageButton
             android:layout_width="0dp"
@@ -187,7 +197,9 @@
             android:src="@drawable/astonished"
             android:scaleType="fitCenter"
             android:contentDescription="@string/bouton_4"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/buttonWow"
+            />
     </LinearLayout>
 
 </RelativeLayout>

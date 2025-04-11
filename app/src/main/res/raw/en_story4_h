@@ -1,21 +1,22 @@
 @//@ Start@//@
 @//@ Qt and the chase for a star.@//@0.0
 @//@ One evening, Qt looks at the sky filled with twinkling stars.@//@4.4
-@//@ Wow!@//@9.0
-@//@ Tiny lights everywhere!@//@10.0
-@//@ I wish I could catch one and put it in my pocket.@//@13.2
-@//@ Qt grabs his butterfly net and goes start chasing.@//@17.8
+(thaut) @//@ Wow!@//@9.0
+(et) @//@ Tiny lights everywhere!@//@10.0
+(souris) @//@ I wish I could catch one and put it in my pocket.@//@13.2
+@//@ Qt grabs his butterfly net and goes star chasing.@//@17.8
 @//@ It jumps, runs, stretches out his net, but nothing opens.@//@21.4
-@//@ Qt sides.@//@27.8
+(t) @//@ Qt sighs.@//@27.8
 @//@ Oh no!@//@29.2
-@//@ I can't do it!@//@30.8
-@//@ Suddenly, his friends Zoe arrives.@//@33.4
+(t) @//@ I can't do it!@//@30.8
+[zoe] @//@ Suddenly, his friends Zoé arrives.@//@33.4
 @//@ What are you doing, Qt?@//@37.2
-@//@ I'm trying to catch a star, but there are two high Zoe smiles.@//@39.8
-@//@ We can't scare them, but we can admire them.@//@46.0
-@//@ Look how they shine just for us.@//@50.2
-@//@ Qt sits next to Zoe.@//@53.0
-@//@ Together, they watch the stars in silence.@//@55.2
-@//@ Qt then understands.@//@59.2
-@//@ I don't need to put them in my pocket, so I hurried in my heart.@//@61.6
+(sou) @//@ I'm trying to catch a star, but there are too high.@//@39.8
+(soupir) @//@ Zoé smiles.@//@46.0
+@//@ We can't scare them, but we can admire them.@//@50.2
+(thaut) @//@ Look how they shine just for us.@//@53.0
+@//@ Qt sits next to Zoé.@//@55.2
+@//@ Together, they watch the stars in silence.@//@59.2
+(sou) @//@ Qt then understands.@//@61.6
+@//@ I don't need to put them in my pocket, so I hurried in my heart.@//@63.0
 @//@ The End.@//@
