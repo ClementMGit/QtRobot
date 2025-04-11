@@ -237,9 +237,205 @@ public class Animation {
         }
     }
 
+    public static void showDog(Activity activity, RelativeLayout layout) {
+        ImageView frog = new ImageView(activity);
+        frog.setImageResource(R.drawable.dog);
+        frog.setId(View.generateViewId());
+        frog.setTag("dog");
 
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                250, 250 // ✅ Taille réduite
+        );
 
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.ALIGN_PARENT_START);
+        params.addRule(RelativeLayout.CENTER_VERTICAL); // Centrer verticalement
 
+        params.setMargins(5, 0, 0, 0); // Marge à gauche
 
+        frog.setLayoutParams(params);
+        frog.setAlpha(0f);
 
+        layout.addView(frog);
+
+        frog.animate()
+                .alpha(1f)
+                .translationXBy(30f) // petit effet de "pop"
+                .setDuration(600)
+                .start();
+    }
+
+    public static void removeDog(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("dog".equals(view.getTag())) {
+
+                // 🐶 Animation : glisse vers la droite + fondu
+                ObjectAnimator slideOut = ObjectAnimator.ofFloat(view, "translationX", view.getTranslationX(), view.getTranslationX() + 500f);
+                slideOut.setDuration(600);
+
+                ObjectAnimator fadeOut = ObjectAnimator.ofFloat(view, "alpha", 1f, 0f);
+                fadeOut.setDuration(600);
+
+                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.playTogether(slideOut, fadeOut);
+                animatorSet.addListener(new android.animation.AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(android.animation.Animator animation) {
+                        layout.removeView(view); // 🧼 Supprimer le chien une fois l'animation terminée
+                    }
+                });
+
+                animatorSet.start();
+            }
+        }
+    }
+
+    public static void showArbre(Activity activity, RelativeLayout layout) {
+        ImageView frog = new ImageView(activity);
+        frog.setImageResource(R.drawable.tree);
+        frog.setId(View.generateViewId());
+        frog.setTag("arbre");
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                300, 300 // ✅ Taille réduite
+        );
+
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.ALIGN_PARENT_END);
+        params.addRule(RelativeLayout.CENTER_VERTICAL); // Centrer verticalement
+
+        params.setMargins(0, 0, 5, 0); // Marge à gauche
+
+        frog.setLayoutParams(params);
+        frog.setAlpha(0f);
+
+        layout.addView(frog);
+
+        frog.animate()
+                .alpha(1f)
+                .translationXBy(30f) // petit effet de "pop"
+                .setDuration(600)
+                .start();
+    }
+
+    public static void removeArbre(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("arbre".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
+            }
+        }
+    }
+
+    public static void showLeo(Activity activity, RelativeLayout layout) {
+        ImageView frog = new ImageView(activity);
+        frog.setImageResource(R.drawable.leo);
+        frog.setId(View.generateViewId());
+        frog.setTag("leo");
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                300, 300 // ✅ Taille réduite
+        );
+
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.ALIGN_PARENT_END);
+        params.addRule(RelativeLayout.CENTER_VERTICAL); // Centrer verticalement
+
+        params.setMargins(0, 0, 5, 0); // Marge à gauche
+
+        frog.setLayoutParams(params);
+        frog.setAlpha(0f);
+
+        layout.addView(frog);
+
+        frog.animate()
+                .alpha(1f)
+                .translationXBy(30f) // petit effet de "pop"
+                .setDuration(600)
+                .start();
+    }
+
+    public static void removeLeo(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("leo".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
+            }
+        }
+    }
+
+    public static void showLili(Activity activity, RelativeLayout layout) {
+        ImageView frog = new ImageView(activity);
+        frog.setImageResource(R.drawable.lili);
+        frog.setId(View.generateViewId());
+        frog.setTag("lili");
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                300, 300 // ✅ Taille réduite
+        );
+
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.ALIGN_PARENT_END);
+        params.addRule(RelativeLayout.CENTER_VERTICAL); // Centrer verticalement
+
+        params.setMargins(0, 0, 5, 0); // Marge à gauche
+
+        frog.setLayoutParams(params);
+        frog.setAlpha(0f);
+
+        layout.addView(frog);
+
+        frog.animate()
+                .alpha(1f)
+                .translationXBy(30f) // petit effet de "pop"
+                .setDuration(600)
+                .start();
+    }
+
+    public static void removeLili(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("lili".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
+            }
+        }
+    }
+
+    public static void showZoe(Activity activity, RelativeLayout layout) {
+        ImageView frog = new ImageView(activity);
+        frog.setImageResource(R.drawable.zoe);
+        frog.setId(View.generateViewId());
+        frog.setTag("zoe");
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                300, 300 // ✅ Taille réduite
+        );
+
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.ALIGN_PARENT_START);
+        params.addRule(RelativeLayout.CENTER_VERTICAL); // Centrer verticalement
+
+        params.setMargins(5, 0, 0, 0); // Marge à gauche
+
+        frog.setLayoutParams(params);
+        frog.setAlpha(0f);
+
+        layout.addView(frog);
+
+        frog.animate()
+                .alpha(1f)
+                .translationXBy(30f) // petit effet de "pop"
+                .setDuration(600)
+                .start();
+    }
+
+    public static void removeZoe(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("zoe".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
+            }
+        }
+    }
 }
