@@ -60,6 +60,21 @@ Chaque histoire est conçue pour transmettre des émotions positives et aider le
 ## 🚀 Lancer l'application
 
 ## 📂 Structure du projet
+QeeTy/
+├── .idea/                # Fichiers de configuration Android Studio (non modifiables)
+├── app/                  # Dossier principal de l'application Android
+│   ├── src/              # Code source (Java/Kotlin), ressources et layouts
+│   ├── res/              # Ressources graphiques, audios, fichiers XML
+│   └── build.gradle      # Configuration spécifique au module app
+├── gradle/               # Scripts Gradle pour la gestion de projet
+├── .gitignore            # Fichiers/dossiers à ignorer par Git
+├── ReadMe.md             # Présentation du projet (ce fichier)
+├── build.gradle          # Fichier de configuration Gradle principal
+├── gradle.properties     # Propriétés globales du projet
+├── gradlew               # Script d'exécution Gradle (Linux/Mac)
+├── gradlew.bat           # Script d'exécution Gradle (Windows)
+└── settings.gradle       # Déclaration des modules utilisés dans le projet
+
 
 ## ❤️ Remerciements
 
