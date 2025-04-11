@@ -1,15 +1,14 @@
 @//@ Commencer.@//@
-@//@ Couty apprend à partager. Couty adore les biscuits au chocolat.@//@0.0
+(l) @//@ Qt apprend à partager. Qt adore les biscuits au chocolat.@//@0.0
 @//@ Un jour, il en a un énorme paquet.@//@4.4
-@//@ Mienne, tous pour moi, c'est réjoué de s'il.@//@7.5
-@//@ Mais, à chaque fois qu'il croque un biscuit, il voit ses amis jouer non loin.@//@10.4
-@//@ Léo passe en sourisant.@//@14.5
-@//@ Mais à le salut de la main, Ticol, le petit chien remule la queue.@//@16.1
-@//@ Couty regarde son paquet, plein de biscuits et pense.@//@19.7
-@//@ Il les aiment ré sûrement goûté.@//@22.4
-@//@ Mais si je partage en rément, il réfléchit en moment,@//@24.3
-@//@ puis décide d'endonner à chacun de ses amis.@//@28.8
-@//@ Il s'assoit tous ensemble pour goûter les biscuits.@//@31.2
-@//@ Il rigole, partage des histoires, et Couty se sent très heureux.@//@34.0
-@//@ C'est drôle, pense Couty. J'ai moins de biscuits, mais beaucoup plus de joie.@//@37.9
-@//@ Fin.@//@
+@//@ "Miam ! Tous pour moi !" se réjouit-il.@//@7.5
+(soupir) @//@ Mais, à chaque fois qu'il croque un biscuit, il voit ses amis jouer non loin.@//@10.4
+[Leo] @//@ Léo passe en souriant.@//@14.5
+[chien] @//@ Mia le salue de la main. Tiko, le petit chien, remue la queue.@//@16.1
+(tt) @//@ Qt regarde son paquet, plein de biscuits, et pense :@//@19.7
+(soupir) @//@ "Ils aimeraient sûrement goûter… mais si je partage, j’en aurai moins."@//@22.4
+(int) @//@ Il réfléchit un moment, puis décide d’en donner à chacun de ses amis.@//@24.3
+(souris) @//@ Ils s’assoient tous ensemble pour goûter les biscuits.@//@28.8
+(souris) @//@ Ils rigolent, partagent des histoires, et Qt se sent très heureux.@//@31.2
+(int) @//@ "C’est drôle," pense Qt, "j’ai moins de biscuits… mais beaucoup plus de joie !"@//@34.0
+@//@ Fin.@//@37.9

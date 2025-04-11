@@ -1,20 +1,18 @@
 @//@ Commencer.@//@
-@//@ Qutti, après on va dire merci.@//@0.0
-@//@ Un jour, Qutti reçoit un cadeau de son ami Mia, une petite fleur brillante.@//@3.0
-@//@ Qutti regarde la fleur et dit, «Ooooh, c'est beau ! »@//@8.4
-@//@ Mais Mia a l'air un peu déçu.@//@13.0
-@//@ Qutti ne me comprend pas.@//@15.0
-@//@ Il va voir Papiibo.@//@16.2
-@//@ Papiibo, pourquoi Mia est triste ?@//@17.7
-@//@ J'ai aimé son cadeau.@//@20.2
-@//@ Papiibo, souris, tu es aimé.@//@22.2
-@//@ Mais tu dis le mot magique.@//@24.4
-@//@ Quelle mot magique demande Qutti ?@//@26.4
-@//@ Intriguez le mot «Merci » par dis.@//@28.4
-@//@ Poutir retourne voir Mia.@//@32.0
-@//@ Mia, merci ! Portage au lie fleur.@//@33.4
-@//@ Elle me rend très heureux.@//@36.8
-@//@ Mia souris et son deux joies.@//@38.6
-@//@ Qutti comprend alors que dire merci.@//@40.5
-@//@ Ça fait plaisir à tout le monde.@//@42.5
+(e) @//@ Qt apprends à dire merci @//@0.0
+[mia] @//@Un jour, QT reçoit un cadeau de son amie Mia : une petite fleur brillante. @//@3.0
+@//@ QT regarde la fleur et dit : « Oh, c’est beau ! » @//@8.4
+@//@ Mais Mia a l’air un peu déçue. @//@13.0
+@//@ QT ne comprend pas. @//@15.0
+[hibou] @//@ Il va voir Papi Hibou. @//@16.2
+(int) @//@ Papi Hibou, pourquoi Mia est triste ? @//@17.7
+(s) @//@ J’ai aimé son cadeau ! @//@20.2
+@//@ Papi Hibou sourit : @//@22.2
+@//@ Tu as aimé, mais as-tu dit le mot magique ? @//@23.4
+(int) @//@ Quel mot magique ? demande QT, intrigué. @//@26.4
+@//@ Le mot 'merci', pardi ! @//@29.0
+[/hibou] [mia] @//@ QT retourne voir Mia. @//@32.0
+(souris) @//@ Mia, MERCI pour la jolie fleur ! Elle me rend très heureux.@//@33.4
+@//@ Mia sourit et saute de joie. @//@38.5
+[/mia] @//@ QT comprend alors que dire "merci", ça fait plaisir à tout le monde. @//@40.5
 @//@ Fin.@//@

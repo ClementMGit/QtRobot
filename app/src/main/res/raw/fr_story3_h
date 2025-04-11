@@ -1,17 +1,17 @@
 @//@ Commencer.@//@
-@//@ Qté, apprend à dire merci.@//@0.0
-@//@ Un jour, Qté reçoit un cadeau de son ami, il y a une petite fleur brillante.@//@4.0
-@//@ Qté regarde la fleur et dit, « Oh, c'est beau ! »@//@9.0
-@//@ Mais il y a l'air un peu déçu.@//@13.0
-@//@ Qté ne comprend pas, il va voir Papilibou.@//@15.0
-@//@ Papilibou, pourquoi il y a un triste ? J'ai aimé son cadeau.@//@19.0
-@//@ Papilibou, oui.@//@23.0
-@//@ Tu as aimé, mais est-ce que tu as dit le mommagique ?@//@25.0
-@//@ Quel mommagique demande Qté, intrigué ?@//@28.0
-@//@ Le mommé merci par dis.@//@31.0
-@//@ Qté retonde voir Mia.@//@33.0
-@//@ Mia, merci pour la jolie fleur.@//@36.0
-@//@ Elle me rend très heureux.@//@38.0
-@//@ Mia, oui, est saute de joie.@//@40.0
-@//@ Qté comprend alors que dire merci, ça fait plaisir à tout le monde.@//@42.0
+@//@ Qt, apprend à dire merci.@//@0.0
+@//@ Un jour, Qt reçoit un cadeau de son amie Mia une petite fleur brillante.@//@4.0
+@//@ Qt regarde la fleur et dit, « Oh, c’est beau ! »@//@9.0
+(t) @//@ Mais Mia a l’air un peu déçue.@//@13.0
+@//@ Qt ne comprend pas, il va voir Papi Hibou.@//@15.0
+[hibou] @//@ Papi Hibou, pourquoi Mia est triste ?J’ai aimé son cadeau !@//@19.0
+@//@ Papi Hibou sourit :@//@23.0
+@//@ Tu as aimé, mais as-tu dit le mot magique ?@//@24.5
+(int) @//@ Quel mot magique ? demande Qt, intrigué.@//@28.0
+@//@ Le mot 'merci', pardi !@//@30.4
+[/hibou] [mia] @//@ Qt retourne voir Mia.@//@33.0
+(souris) @//@ Mia, MERCI pour la jolie fleur !@//@36.0
+(souris) @//@ Elle me rend très heureux.@//@38.0
+@//@ Mia sourit et saute de joie.@//@40.0
+[/mia] @//@ Qt comprend alors que dire "merci", ça fait plaisir à tout le monde.@//@42.0
 @//@ Fin.@//@

@@ -53,12 +53,11 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //Commenter le if pour pouvoir cliquer vite sans attendre la fin de l'audio
-                if(!voiceAudio.isPlaying()){
                     if (textIndex < text.length-1) {
                         textIndex++;
                     }
                     changeText();
-                }
+
 
 
 
