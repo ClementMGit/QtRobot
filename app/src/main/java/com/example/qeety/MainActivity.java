@@ -1,6 +1,7 @@
 package com.example.qeety;
 
 import android.media.MediaPlayer;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -41,10 +42,132 @@ public class MainActivity extends Activity {
     private String[] text;
     private int textIndex = 0;
 
+    private ImageButton anxiousButton;
+
+    private ImageButton heartButton;
+
+    private ImageButton starsButton;
+
+    private ImageButton wowButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        anxiousButton = findViewById(R.id.buttonAnxious);
+        heartButton = findViewById(R.id.buttonHeart);
+        starsButton = findViewById(R.id.buttonStars);
+        wowButton = findViewById(R.id.buttonWow);
+
+        anxiousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Réinitialise les propriétés au cas où
+                anxiousButton.setScaleX(1f);
+                anxiousButton.setScaleY(1f);
+                anxiousButton.setAlpha(1f);
+
+                // Lance l'animation
+                anxiousButton.animate()
+                        .scaleX(2f)
+                        .scaleY(2f)
+                        .alpha(0f)
+                        .setDuration(1000)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Remet le bouton à sa taille d’origine et visible
+                                anxiousButton.setScaleX(1f);
+                                anxiousButton.setScaleY(1f);
+                                anxiousButton.setAlpha(1f);
+                            }
+                        })
+                        .start();
+            }
+        });
+
+        heartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Réinitialise les propriétés au cas où
+                heartButton.setScaleX(1f);
+                heartButton.setScaleY(1f);
+                heartButton.setAlpha(1f);
+
+                // Lance l'animation
+                heartButton.animate()
+                        .scaleX(2f)
+                        .scaleY(2f)
+                        .alpha(0f)
+                        .setDuration(1000)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Remet le bouton à sa taille d’origine et visible
+                                heartButton.setScaleX(1f);
+                                heartButton.setScaleY(1f);
+                                heartButton.setAlpha(1f);
+                            }
+                        })
+                        .start();
+            }
+        });
+
+        starsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Réinitialise les propriétés au cas où
+                starsButton.setScaleX(1f);
+                starsButton.setScaleY(1f);
+                starsButton.setAlpha(1f);
+
+                // Lance l'animation
+                starsButton.animate()
+                        .scaleX(2f)
+                        .scaleY(2f)
+                        .alpha(0f)
+                        .setDuration(1000)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Remet le bouton à sa taille d’origine et visible
+                                starsButton.setScaleX(1f);
+                                starsButton.setScaleY(1f);
+                                starsButton.setAlpha(1f);
+                            }
+                        })
+                        .start();
+
+            }
+        });
+
+        wowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Réinitialise les propriétés au cas où
+                wowButton.setScaleX(1f);
+                wowButton.setScaleY(1f);
+                wowButton.setAlpha(1f);
+
+                // Lance l'animation
+                wowButton.animate()
+                        .scaleX(2f)
+                        .scaleY(2f)
+                        .alpha(0f)
+                        .setDuration(1000)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Remet le bouton à sa taille d’origine et visible
+                                wowButton.setScaleX(1f);
+                                wowButton.setScaleY(1f);
+                                wowButton.setAlpha(1f);
+                            }
+                        })
+                        .start();
+
+            }
+        });
 
         mainLayout = findViewById(R.id.mainLayout);
         initLocalePicker();
