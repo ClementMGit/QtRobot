@@ -162,14 +162,6 @@ public class Animation {
         animatorSet.start();
     }
 
-
-
-
-
-
-
-
-
     public static void removeRainbow(RelativeLayout layout) {
         for (int i = layout.getChildCount() - 1; i >= 0; i--) {
             View view = layout.getChildAt(i);
@@ -178,6 +170,76 @@ public class Animation {
             }
         }
     }
+
+
+    public static void showFrog(Activity activity, RelativeLayout layout) {
+        ImageView frog = new ImageView(activity);
+        frog.setImageResource(R.drawable.frog);
+        frog.setId(View.generateViewId());
+        frog.setTag("frog");
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                200, 200 // ✅ Taille réduite
+        );
+
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.ALIGN_PARENT_START);
+        params.addRule(RelativeLayout.CENTER_VERTICAL); // Centrer verticalement
+
+        params.setMargins(5, 0, 0, 0); // Marge à gauche
+
+        frog.setLayoutParams(params);
+        frog.setAlpha(0f);
+
+        layout.addView(frog);
+
+        frog.animate()
+                .alpha(1f)
+                .translationXBy(30f) // petit effet de "pop"
+                .setDuration(600)
+                .start();
+    }
+
+    public static void animateFrogJump(ImageView frog) {
+        // Animation de saut (monter puis descendre)
+        ObjectAnimator jumpUp = ObjectAnimator.ofFloat(frog, "translationY", 0f, -100f);
+        jumpUp.setDuration(300);
+        jumpUp.setInterpolator(new DecelerateInterpolator());
+
+        ObjectAnimator jumpDown = ObjectAnimator.ofFloat(frog, "translationY", -100f, 0f);
+        jumpDown.setDuration(300);
+        jumpDown.setInterpolator(new DecelerateInterpolator());
+
+        AnimatorSet jumpSet = new AnimatorSet();
+        jumpSet.playSequentially(jumpUp, jumpDown);
+        jumpSet.setStartDelay(200); // Petit délai entre les sauts
+        //jumpSet.setRepeatCount(ValueAnimator.INFINITE); // Répéter à l'infini
+
+        jumpSet.start();
+    }
+
+    public static void startFrogJumpByTag(RelativeLayout layout) {
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            View view = layout.getChildAt(i);
+            if ("frog".equals(view.getTag()) && view instanceof ImageView) {
+                animateFrogJump((ImageView) view);
+                break; // 🛑 Stop après la première grenouille trouvée
+            }
+        }
+    }
+
+    public static void removeFrog(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("frog".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
+            }
+        }
+    }
+
+
+
+
 
 
 }
