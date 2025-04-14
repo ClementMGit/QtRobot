@@ -238,10 +238,10 @@ public class Animation {
     }
 
     public static void showDog(Activity activity, RelativeLayout layout) {
-        ImageView frog = new ImageView(activity);
-        frog.setImageResource(R.drawable.dog);
-        frog.setId(View.generateViewId());
-        frog.setTag("dog");
+        ImageView dog = new ImageView(activity);
+        dog.setImageResource(R.drawable.dog);
+        dog.setId(View.generateViewId());
+        dog.setTag("dog");
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 250, 250 // ✅ Taille réduite
@@ -253,12 +253,12 @@ public class Animation {
 
         params.setMargins(5, 0, 0, 0); // Marge à gauche
 
-        frog.setLayoutParams(params);
-        frog.setAlpha(0f);
+        dog.setLayoutParams(params);
+        dog.setAlpha(0f);
 
-        layout.addView(frog);
+        layout.addView(dog);
 
-        frog.animate()
+        dog.animate()
                 .alpha(1f)
                 .translationXBy(30f) // petit effet de "pop"
                 .setDuration(600)
@@ -292,10 +292,10 @@ public class Animation {
     }
 
     public static void showArbre(Activity activity, RelativeLayout layout) {
-        ImageView frog = new ImageView(activity);
-        frog.setImageResource(R.drawable.tree);
-        frog.setId(View.generateViewId());
-        frog.setTag("arbre");
+        ImageView arbre = new ImageView(activity);
+        arbre.setImageResource(R.drawable.tree);
+        arbre.setId(View.generateViewId());
+        arbre.setTag("arbre");
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 300, 300 // ✅ Taille réduite
@@ -307,12 +307,12 @@ public class Animation {
 
         params.setMargins(0, 0, 5, 0); // Marge à gauche
 
-        frog.setLayoutParams(params);
-        frog.setAlpha(0f);
+        arbre.setLayoutParams(params);
+        arbre.setAlpha(0f);
 
-        layout.addView(frog);
+        layout.addView(arbre);
 
-        frog.animate()
+        arbre.animate()
                 .alpha(1f)
                 .translationXBy(30f) // petit effet de "pop"
                 .setDuration(600)
@@ -329,10 +329,10 @@ public class Animation {
     }
 
     public static void showLeo(Activity activity, RelativeLayout layout) {
-        ImageView frog = new ImageView(activity);
-        frog.setImageResource(R.drawable.leo);
-        frog.setId(View.generateViewId());
-        frog.setTag("leo");
+        ImageView leo = new ImageView(activity);
+        leo.setImageResource(R.drawable.leo);
+        leo.setId(View.generateViewId());
+        leo.setTag("leo");
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 300, 300 // ✅ Taille réduite
@@ -344,12 +344,12 @@ public class Animation {
 
         params.setMargins(0, 0, 5, 0); // Marge à gauche
 
-        frog.setLayoutParams(params);
-        frog.setAlpha(0f);
+        leo.setLayoutParams(params);
+        leo.setAlpha(0f);
 
-        layout.addView(frog);
+        layout.addView(leo);
 
-        frog.animate()
+        leo.animate()
                 .alpha(1f)
                 .translationXBy(30f) // petit effet de "pop"
                 .setDuration(600)
@@ -366,10 +366,10 @@ public class Animation {
     }
 
     public static void showLili(Activity activity, RelativeLayout layout) {
-        ImageView frog = new ImageView(activity);
-        frog.setImageResource(R.drawable.lili);
-        frog.setId(View.generateViewId());
-        frog.setTag("lili");
+        ImageView lili = new ImageView(activity);
+        lili.setImageResource(R.drawable.lili);
+        lili.setId(View.generateViewId());
+        lili.setTag("lili");
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 300, 300 // ✅ Taille réduite
@@ -381,12 +381,12 @@ public class Animation {
 
         params.setMargins(0, 0, 5, 0); // Marge à gauche
 
-        frog.setLayoutParams(params);
-        frog.setAlpha(0f);
+        lili.setLayoutParams(params);
+        lili.setAlpha(0f);
 
-        layout.addView(frog);
+        layout.addView(lili);
 
-        frog.animate()
+        lili.animate()
                 .alpha(1f)
                 .translationXBy(30f) // petit effet de "pop"
                 .setDuration(600)
@@ -403,10 +403,10 @@ public class Animation {
     }
 
     public static void showZoe(Activity activity, RelativeLayout layout) {
-        ImageView frog = new ImageView(activity);
-        frog.setImageResource(R.drawable.zoe);
-        frog.setId(View.generateViewId());
-        frog.setTag("zoe");
+        ImageView zoe = new ImageView(activity);
+        zoe.setImageResource(R.drawable.zoe);
+        zoe.setId(View.generateViewId());
+        zoe.setTag("zoe");
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 300, 300 // ✅ Taille réduite
@@ -416,14 +416,14 @@ public class Animation {
         params.addRule(RelativeLayout.ALIGN_PARENT_START);
         params.addRule(RelativeLayout.CENTER_VERTICAL); // Centrer verticalement
 
-        params.setMargins(5, 0, 0, 0); // Marge à gauche
+        params.setMargins(3, 0, 0, 0); // Marge à gauche
 
-        frog.setLayoutParams(params);
-        frog.setAlpha(0f);
+        zoe.setLayoutParams(params);
+        zoe.setAlpha(0f);
 
-        layout.addView(frog);
+        layout.addView(zoe);
 
-        frog.animate()
+        zoe.animate()
                 .alpha(1f)
                 .translationXBy(30f) // petit effet de "pop"
                 .setDuration(600)
@@ -438,4 +438,153 @@ public class Animation {
             }
         }
     }
+
+    public static void showFenetre(Activity activity, RelativeLayout layout) {
+        ImageView fenetre = new ImageView(activity);
+        fenetre.setImageResource(R.drawable.vitre);
+        fenetre.setId(View.generateViewId());
+        fenetre.setTag("fenetre");
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                600, 600 // ✅ Taille réduite
+        );
+
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        params.addRule(RelativeLayout.CENTER_VERTICAL); // Centrer verticalement
+
+        params.setMargins(3, 0, 0, 0); // Marge à gauche
+
+        fenetre.setLayoutParams(params);
+        fenetre.setAlpha(0f);
+
+        layout.addView(fenetre);
+
+        fenetre.animate()
+                .alpha(1f)
+                .translationXBy(30f) // petit effet de "pop"
+                .setDuration(600)
+                .start();
+    }
+
+    public static void removeFenetre(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("fenetre".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
+            }
+        }
+    }
+
+    public static void showHibou(Activity activity, RelativeLayout layout) {
+        ImageView hibou = new ImageView(activity);
+        hibou.setImageResource(R.drawable.hibou);
+        hibou.setId(View.generateViewId());
+        hibou.setTag("hibou");
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                300, 300 // ✅ Taille réduite
+        );
+
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.ALIGN_PARENT_START);
+        params.addRule(RelativeLayout.CENTER_VERTICAL);
+
+        params.setMargins(5, 0, 0, 0); // ✅ Petite marge à gauche (collé mais pas "touché")
+
+        hibou.setLayoutParams(params);
+        hibou.setAlpha(0f);
+
+        layout.addView(hibou);
+
+        hibou.animate()
+                .alpha(1f)
+                .setDuration(600)
+                .start();
+    }
+
+
+    public static void removeHibou(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("hibou".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
+            }
+        }
+    }
+
+    public static void showChat(Activity activity, RelativeLayout layout) {
+        ImageView chat = new ImageView(activity);
+        chat.setImageResource(R.drawable.chat);
+        chat.setId(View.generateViewId());
+        chat.setTag("chat");
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                300, 300 // ✅ Taille réduite
+        );
+
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.ALIGN_PARENT_END);
+        params.addRule(RelativeLayout.CENTER_VERTICAL);
+
+        params.setMargins(0, 0, 5, 0); // ✅ Petite marge à gauche (collé mais pas "touché")
+
+        chat.setLayoutParams(params);
+        chat.setAlpha(0f);
+
+        layout.addView(chat);
+
+        chat.animate()
+                .alpha(1f)
+                .setDuration(600)
+                .start();
+    }
+
+
+    public static void removeChat(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("chat".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
+            }
+        }
+    }
+
+    public static void showFleur(Activity activity, RelativeLayout layout) {
+        ImageView fleur = new ImageView(activity);
+        fleur.setImageResource(R.drawable.fleur);
+        fleur.setId(View.generateViewId());
+        fleur.setTag("fleur");
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                300, 300 // ✅ Taille réduite
+        );
+
+        // ✅ Positionner à gauche, verticalement centré
+        params.addRule(RelativeLayout.ALIGN_PARENT_START);
+        params.addRule(RelativeLayout.CENTER_VERTICAL);
+
+        params.setMargins(5, 0, 0, 0); // ✅ Petite marge à gauche (collé mais pas "touché")
+
+        fleur.setLayoutParams(params);
+        fleur.setAlpha(0f);
+
+        layout.addView(fleur);
+
+        fleur.animate()
+                .alpha(1f)
+                .setDuration(600)
+                .start();
+    }
+
+
+    public static void removeFleur(RelativeLayout layout) {
+        for (int i = layout.getChildCount() - 1; i >= 0; i--) {
+            View view = layout.getChildAt(i);
+            if ("fleur".equals(view.getTag())) {
+                fadeOutAndRemove(view, layout);
+            }
+        }
+    }
+
 }
