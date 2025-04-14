@@ -83,6 +83,7 @@ public class MainActivity extends Activity {
                             }
                         })
                         .start();
+                Animation.showFallingAnxius(MainActivity.this, mainLayout, 20);
             }
         });
 
@@ -110,6 +111,7 @@ public class MainActivity extends Activity {
                             }
                         })
                         .start();
+                Animation.showFallingHearts(MainActivity.this, mainLayout, 20); // génère 20 cœurs
             }
         });
 
@@ -137,7 +139,7 @@ public class MainActivity extends Activity {
                             }
                         })
                         .start();
-
+                Animation.showFallingStars(MainActivity.this, mainLayout, 20); // génère 20 étoiles
             }
         });
 
@@ -165,7 +167,7 @@ public class MainActivity extends Activity {
                             }
                         })
                         .start();
-
+                Animation.showFallingSurprise(MainActivity.this, mainLayout, 20);
             }
         });
 
@@ -200,6 +202,10 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
+
+
+
         phrase = findViewById(R.id.phrase);
         changeFiles();
     }

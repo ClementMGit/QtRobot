@@ -1,16 +1,17 @@
 package com.example.qeety;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 //import android.util.Log;
-import android.util.Log;
+import android.content.Context;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.view.animation.ScaleAnimation;
 import android.view.animation.DecelerateInterpolator;
 
 import com.bumptech.glide.Glide;
@@ -587,4 +588,172 @@ public class Animation {
         }
     }
 
+    public static void showFallingHearts(Context context, RelativeLayout layout, int numberOfHearts) {
+        Random random = new Random();
+
+        for (int i = 0; i < numberOfHearts; i++) {
+            final ImageView heart = new ImageView(context);
+
+            heart.setImageResource(R.drawable.coeur); // ton image de cœur
+            heart.setLayoutParams(new RelativeLayout.LayoutParams(100, 100)); // taille du cœur
+            heart.setTag("heart");
+
+            // Position X aléatoire en haut de l'écran
+            int x = random.nextInt(layout.getWidth());
+            heart.setX(x);
+            heart.setY(-100); // juste au-dessus de l'écran
+
+            layout.addView(heart);
+
+            // Animation de chute
+            ObjectAnimator fall = ObjectAnimator.ofFloat(heart, "translationY", layout.getHeight() + 200f);
+            fall.setDuration(3000 + random.nextInt(2000)); // durée entre 3 et 5s
+            fall.setInterpolator(new AccelerateDecelerateInterpolator());
+
+            // Léger mouvement horizontal
+            ObjectAnimator sway = ObjectAnimator.ofFloat(heart, "translationX", x, x + random.nextInt(200) - 100);
+            sway.setDuration(fall.getDuration());
+            sway.setInterpolator(new AccelerateDecelerateInterpolator());
+
+            // Fait disparaître le cœur à la fin
+            fall.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    layout.removeView(heart);
+                }
+            });
+
+            AnimatorSet set = new AnimatorSet();
+            set.playTogether(fall, sway);
+            set.setStartDelay(random.nextInt(1000)); // délai aléatoire
+            set.start();
+        }
+    }
+
+
+    public static void showFallingStars(Context context, RelativeLayout layout, int numberOfStars) {
+        Random random = new Random();
+
+        for (int i = 0; i < numberOfStars; i++) {
+            final ImageView etoile = new ImageView(context);
+
+            etoile.setImageResource(R.drawable.stars); // ton image de cœur
+            etoile.setLayoutParams(new RelativeLayout.LayoutParams(100, 100)); // taille du cœur
+            etoile.setTag("etoile");
+
+            // Position X aléatoire en haut de l'écran
+            int x = random.nextInt(layout.getWidth());
+            etoile.setX(x);
+            etoile.setY(-100); // juste au-dessus de l'écran
+
+            layout.addView(etoile);
+
+            // Animation de chute
+            ObjectAnimator fall = ObjectAnimator.ofFloat(etoile, "translationY", layout.getHeight() + 200f);
+            fall.setDuration(3000 + random.nextInt(2000)); // durée entre 3 et 5s
+            fall.setInterpolator(new AccelerateDecelerateInterpolator());
+
+            // Léger mouvement horizontal
+            ObjectAnimator sway = ObjectAnimator.ofFloat(etoile, "translationX", x, x + random.nextInt(200) - 100);
+            sway.setDuration(fall.getDuration());
+            sway.setInterpolator(new AccelerateDecelerateInterpolator());
+
+            // Fait disparaître le cœur à la fin
+            fall.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    layout.removeView(etoile);
+                }
+            });
+
+            AnimatorSet set = new AnimatorSet();
+            set.playTogether(fall, sway);
+            set.setStartDelay(random.nextInt(1000)); // délai aléatoire
+            set.start();
+        }
+    }
+
+    public static void showFallingSurprise(Context context, RelativeLayout layout, int numberOfSurprise) {
+        Random random = new Random();
+
+        for (int i = 0; i < numberOfSurprise; i++) {
+            final ImageView surprise = new ImageView(context);
+
+            surprise.setImageResource(R.drawable.astonished); // ton image de cœur
+            surprise.setLayoutParams(new RelativeLayout.LayoutParams(100, 100)); // taille du cœur
+            surprise.setTag("surprise");
+
+            // Position X aléatoire en haut de l'écran
+            int x = random.nextInt(layout.getWidth());
+            surprise.setX(x);
+            surprise.setY(-100); // juste au-dessus de l'écran
+
+            layout.addView(surprise);
+
+            // Animation de chute
+            ObjectAnimator fall = ObjectAnimator.ofFloat(surprise, "translationY", layout.getHeight() + 200f);
+            fall.setDuration(3000 + random.nextInt(2000)); // durée entre 3 et 5s
+            fall.setInterpolator(new AccelerateDecelerateInterpolator());
+
+            // Léger mouvement horizontal
+            ObjectAnimator sway = ObjectAnimator.ofFloat(surprise, "translationX", x, x + random.nextInt(200) - 100);
+            sway.setDuration(fall.getDuration());
+            sway.setInterpolator(new AccelerateDecelerateInterpolator());
+
+            // Fait disparaître les surprise à la fin
+            fall.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    layout.removeView(surprise);
+                }
+            });
+
+            AnimatorSet set = new AnimatorSet();
+            set.playTogether(fall, sway);
+            set.setStartDelay(random.nextInt(1000)); // délai aléatoire
+            set.start();
+        }
+    }
+
+    public static void showFallingAnxius(Context context, RelativeLayout layout, int numberOfAnxius) {
+        Random random = new Random();
+
+        for (int i = 0; i < numberOfAnxius; i++) {
+            final ImageView anxius = new ImageView(context);
+
+            anxius.setImageResource(R.drawable.anxious); // ton image de cœur
+            anxius.setLayoutParams(new RelativeLayout.LayoutParams(100, 100)); // taille du cœur
+            anxius.setTag("anxius");
+
+            // Position X aléatoire en haut de l'écran
+            int x = random.nextInt(layout.getWidth());
+            anxius.setX(x);
+            anxius.setY(-100); // juste au-dessus de l'écran
+
+            layout.addView(anxius);
+
+            // Animation de chute
+            ObjectAnimator fall = ObjectAnimator.ofFloat(anxius, "translationY", layout.getHeight() + 200f);
+            fall.setDuration(3000 + random.nextInt(2000)); // durée entre 3 et 5s
+            fall.setInterpolator(new AccelerateDecelerateInterpolator());
+
+            // Léger mouvement horizontal
+            ObjectAnimator sway = ObjectAnimator.ofFloat(anxius, "translationX", x, x + random.nextInt(200) - 100);
+            sway.setDuration(fall.getDuration());
+            sway.setInterpolator(new AccelerateDecelerateInterpolator());
+
+            // Fait disparaître les anxius à la fin
+            fall.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    layout.removeView(anxius);
+                }
+            });
+
+            AnimatorSet set = new AnimatorSet();
+            set.playTogether(fall, sway);
+            set.setStartDelay(random.nextInt(1000)); // délai aléatoire
+            set.start();
+        }
+    }
 }
