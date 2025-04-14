@@ -344,22 +344,28 @@ public class MainActivity extends Activity {
                     case 0:
                         storyContent = getResources().openRawResource(R.raw.fr_story1_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio1_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 1:
                         storyContent = getResources().openRawResource(R.raw.fr_story2_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio2_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 2:
                         storyContent = getResources().openRawResource(R.raw.fr_story3_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio3_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 3:
                         storyContent = getResources().openRawResource(R.raw.fr_story4_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio4_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage_nuit);
+
                         break;
                     case 4:
                         storyContent = getResources().openRawResource(R.raw.fr_story5_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio5_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                 }
             } else if (lang.equals("en")) {
@@ -367,22 +373,27 @@ public class MainActivity extends Activity {
                     case 0:
                         storyContent = getResources().openRawResource(R.raw.en_story1_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio1_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 1:
                         storyContent = getResources().openRawResource(R.raw.en_story2_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio2_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 2:
                         storyContent = getResources().openRawResource(R.raw.en_story3_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio3_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 3:
                         storyContent = getResources().openRawResource(R.raw.en_story4_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio4_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage_nuit);
                         break;
                     case 4:
                         storyContent = getResources().openRawResource(R.raw.en_story5_f);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio5_f);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                 }
             }
@@ -392,22 +403,27 @@ public class MainActivity extends Activity {
                     case 0:
                         storyContent = getResources().openRawResource(R.raw.fr_story1_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio1_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 1:
                         storyContent = getResources().openRawResource(R.raw.fr_story2_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio2_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 2:
                         storyContent = getResources().openRawResource(R.raw.fr_story3_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio3_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 3:
                         storyContent = getResources().openRawResource(R.raw.fr_story4_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio4_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage_nuit);
                         break;
                     case 4:
                         storyContent = getResources().openRawResource(R.raw.fr_story5_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.fr_audio5_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                 }
             } else if (lang.equals("en")) {
@@ -415,22 +431,27 @@ public class MainActivity extends Activity {
                     case 0:
                         storyContent = getResources().openRawResource(R.raw.en_story1_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio1_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 1:
                         storyContent = getResources().openRawResource(R.raw.en_story2_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio2_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 2:
                         storyContent = getResources().openRawResource(R.raw.en_story3_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio3_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                     case 3:
                         storyContent = getResources().openRawResource(R.raw.en_story4_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio4_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage_nuit);
                         break;
                     case 4:
                         storyContent = getResources().openRawResource(R.raw.en_story5_h);
                         voiceAudio = MediaPlayer.create(getBaseContext(), R.raw.en_audio5_h);
+                        mainLayout.setBackgroundResource(R.drawable.paysage);
                         break;
                 }
             }
