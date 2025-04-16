@@ -13,7 +13,6 @@
 [/arbre]@//@ QT continue et trouve un chat.@//@23.6
 [int][chat]@//@ Chaton, veux-tu me faire un câlin ?@//@25.6
 @//@ Le chat ronronne et frotte sa tête contre QT.@//@28.8
-
 (soupir)@//@c’est gentil mais ce n’est pas encore un câlin complet, pense QT.@//@31.6
 [/chat][Leo]@//@ Puis QT voit son ami Léo.@//@36.5
 @//@ Léo, j’ai besoin d’un câlin.@//@38.4
