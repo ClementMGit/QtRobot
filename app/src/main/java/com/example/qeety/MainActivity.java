@@ -225,7 +225,7 @@ public class MainActivity extends Activity {
             voiceAudio.start();
             if(textIndex+1<text.length){
                 String[] buffer_next = text[textIndex+1].split("@//@");
-                if(buffer_next.length>2){
+                if(buffer_next.length>2 && !buffer_next[2].trim().isEmpty()){
                     int endTime = (int)(Float.parseFloat(buffer_next[2]) * 1000);
 
                     // Arrêter l'audio à la fin du segment
@@ -478,8 +478,14 @@ public class MainActivity extends Activity {
             Animation.removeButterfliesWithAnimation(mainLayout);
         }
 
-        if (texte.contains("grenouille")) {
+        if (texte.contains("[grenouille]")) {
             Log.d("verifsianim", "Détection de 'grenouille' → TODO : Ajouter animation");
+            Animation.showFrog(this,mainLayout);
+        }
+
+        if (texte.contains("[/grenouille]")) {
+            Log.d("verifsianim", "Détection de 'grenouille' → TODO : Ajouter animation");
+            Animation.removeFrog(mainLayout);
         }
 
         if (texte.contains("[arc-en-ciel]")) {
@@ -492,8 +498,88 @@ public class MainActivity extends Activity {
         }
 
 
-        if (texte.contains("arbre")) {
+        if (texte.contains("[arbre]")) {
             Log.d("verifsianim", "Détection de 'arbre' → TODO : Ajouter animation");
+            Animation.showArbre(this,mainLayout);
+        }
+
+        if (texte.contains("[/arbre]")) {
+            Log.d("verifsianim", "Détection de 'arbre' → TODO : Disparition animation");
+            Animation.removeArbre(mainLayout);
+        }
+
+        if (texte.contains("[fleur]")) {
+            Log.d("verifsianim", "Détection de 'fleur' → TODO : Ajouter animation");
+            Animation.showFleur(this,mainLayout);
+        }
+
+        if (texte.contains("[/fleur]")) {
+            Log.d("verifsianim", "Détection de 'fleur' → TODO : Disparition animation");
+            Animation.removeFleur(mainLayout);
+        }
+
+        if (texte.contains("[chien]")) {
+            Log.d("verifsianim", "Détection de 'chien' → TODO : Ajouter animation");
+            Animation.showDog(this,mainLayout);
+        }
+
+        if (texte.contains("[/chien]")) {
+            Log.d("verifsianim", "Détection de 'chien' → TODO : Disparition animation");
+            Animation.removeDog(mainLayout);
+        }
+        if (texte.contains("[chat]")) {
+            Log.d("verifsianim", "Détection de 'chat' → TODO : Ajouter animation");
+            Animation.showChat(this,mainLayout);
+        }
+
+        if (texte.contains("[/chat]")) {
+            Log.d("verifsianim", "Détection de 'chat' → TODO : Disparition animation");
+            Animation.removeChat(mainLayout);
+        }
+        if (texte.contains("[hibou]")) {
+            Log.d("verifsianim", "Détection de 'hibou' → TODO : Ajouter animation");
+            Animation.showHibou(this,mainLayout);
+        }
+
+        if (texte.contains("[/hibou]")) {
+            Log.d("verifsianim", "Détection de 'hibou' → TODO : Disparition animation");
+            Animation.removeHibou(mainLayout);
+        }
+        if (texte.contains("[fenetre]")) {
+            Log.d("verifsianim", "Détection de 'fenetre' → TODO : Ajouter animation");
+            Animation.showFenetre(this,mainLayout);
+        }
+
+        if (texte.contains("[/fenetre]")) {
+            Log.d("verifsianim", "Détection de 'fenetre' → TODO : Disparition animation");
+            Animation.removeFenetre(mainLayout);
+        }
+        if (texte.contains("[zoe]")) {
+            Log.d("verifsianim", "Détection de 'zoe' → TODO : Ajouter animation");
+            Animation.showZoe(this,mainLayout);
+        }
+
+        if (texte.contains("[/zoe]")) {
+            Log.d("verifsianim", "Détection de 'zoe' → TODO : Disparition animation");
+            Animation.removeZoe(mainLayout);
+        }
+        if (texte.contains("[lili]")) {
+            Log.d("verifsianim", "Détection de 'lili' → TODO : Ajouter animation");
+            Animation.showLili(this,mainLayout);
+        }
+
+        if (texte.contains("[/lili]")) {
+            Log.d("verifsianim", "Détection de 'lili' → TODO : Disparition animation");
+            Animation.removeLili(mainLayout);
+        }
+        if (texte.contains("[leo]")) {
+            Log.d("verifsianim", "Détection de 'leo' → TODO : Ajouter animation");
+            Animation.showLeo(this,mainLayout);
+        }
+
+        if (texte.contains("[/leo]")) {
+            Log.d("verifsianim", "Détection de 'leo' → TODO : Disparition animation");
+            Animation.removeLeo(mainLayout);
         }
 
         // Détection des émotions
