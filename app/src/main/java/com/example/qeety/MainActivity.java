@@ -50,6 +50,9 @@ public class MainActivity extends Activity {
 
     private ImageButton wowButton;
 
+    private Handler audioStopHandler = new Handler();
+    private Runnable stopAudioRunnable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,34 +215,50 @@ public class MainActivity extends Activity {
     private void changeText(){
         String[] buffer = text[textIndex].split("@//@");
 
-        //Change le texte
+        // Changer le texte
         phrase.setText(buffer[1]);
-        //Animer éventuellement
         verifsianim(text[textIndex]);
-        //Lire l'audio
-        if(buffer.length > 2 && !buffer[2].trim().isEmpty()){
+
+        // Nettoyer un éventuel ancien timer
+        if (stopAudioRunnable != null) {
+            audioStopHandler.removeCallbacks(stopAudioRunnable);
+        }
+
+        // Lire l'audio si disponible
+        if (buffer.length > 2 && !buffer[2].trim().isEmpty()) {
             String time = buffer[2].trim();
             int startTime = (int)(Float.parseFloat(time) * 1000); // secondes → ms
 
-            voiceAudio.seekTo(startTime);
-            voiceAudio.start();
-            if(textIndex+1<text.length){
-                String[] buffer_next = text[textIndex+1].split("@//@");
-                if(buffer_next.length>2 && !buffer_next[2].trim().isEmpty()){
-                    int endTime = (int)(Float.parseFloat(buffer_next[2]) * 1000);
-
-                    // Arrêter l'audio à la fin du segment
-                    new Handler().postDelayed(() -> {
-                        if (voiceAudio.isPlaying()) {
-                            voiceAudio.pause();
-                        }
-                    }, endTime - startTime);
+            // Stopper et remettre à zéro l'audio s'il joue
+            if (voiceAudio != null) {
+                if (voiceAudio.isPlaying()) {
+                    voiceAudio.pause();
                 }
-
+                voiceAudio.seekTo(0); // ou .reset() si tu veux tout changer
             }
 
+            // Lancer l'audio au bon endroit
+            voiceAudio.seekTo(startTime);
+            voiceAudio.start();
+
+            // Définir le moment où on doit arrêter
+            if (textIndex + 1 < text.length) {
+                String[] buffer_next = text[textIndex + 1].split("@//@");
+                if (buffer_next.length > 2 && !buffer_next[2].trim().isEmpty()) {
+                    int endTime = (int)(Float.parseFloat(buffer_next[2].trim()) * 1000);
+
+                    stopAudioRunnable = () -> {
+                        if (voiceAudio != null && voiceAudio.isPlaying()) {
+                            voiceAudio.pause();
+                        }
+                    };
+
+                    audioStopHandler.postDelayed(stopAudioRunnable, endTime - startTime);
+                }
+            }
         }
     }
+
 
 
     private void initLocalePicker() {
@@ -344,6 +363,13 @@ public class MainActivity extends Activity {
         });
     }
     private void changeFiles(){
+        if (voiceAudio != null) {
+            if (voiceAudio.isPlaying()) {
+                voiceAudio.stop();
+            }
+            voiceAudio.release();
+            voiceAudio = null;
+        }
         if(voice.equals("F")){
             if(lang.equals("fr")){
                 switch (storySelected){
