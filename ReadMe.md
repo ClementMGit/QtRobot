@@ -97,6 +97,7 @@ Merci également à toute l’équipe pour la qualité du travail collaboratif !
 
 ## 📎 Liens utiles
 🔗 Documentation du robot QT : https://docs.luxai.com/
+https://filesender.renater.fr/?s=download&token=a43469ff-e3a5-4c38-889c-af62a7b8c3d5
 
 
 
